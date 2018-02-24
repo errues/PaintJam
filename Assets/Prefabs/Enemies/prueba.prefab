@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: 0
+  maxHealth: 1
+  maxTransparency: 0.3
+  filling: {fileID: 212793851441708588}
 --- !u!212 &212793851441708588
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -147,7 +150,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ab3d83b81c66d4b4abc9dae1e9277ede, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

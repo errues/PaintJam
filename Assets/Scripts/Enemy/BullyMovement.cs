@@ -25,7 +25,6 @@ public class BullyMovement : EnemyMovement {
 	}
 
 	private bool ShouldChase(){
-		print (player.position.x + " - " + transform.position.x + " - " + player.position.y + " - " + transform.position.y);
 		return Mathf.Abs (player.position.x - transform.position.x) < chasingDistance &&
 		Mathf.Abs (player.position.y - transform.position.y) < maxHeightDifference;
 	}

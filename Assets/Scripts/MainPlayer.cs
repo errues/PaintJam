@@ -33,24 +33,40 @@ public class MainPlayer : MonoBehaviour {
 	}
 
     private void move() {
-        xVel = rb.velocity.x * Vector2.right;
-        Vector2 yVel = rb.velocity.y * Vector2.up;
+
+        //xVel = rb.velocity.x * Vector2.right;
+        //if (!isJumping) { //Only add the horizontal speed if the player is on the ground
+        //    xVel = speed * Vector2.right * Input.GetAxis("Horizontal");
+        //}
+
+        //if (rb.velocity.y < 0) {
+        //    yVel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        //} else if (rb.velocity.y > 0) {
+        //    yVel += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        //}
+
+        //rb.velocity = xVel + yVel;
+
         if (!isJumping) { //Only add the horizontal speed if the player is on the ground
-            xVel = speed * Vector2.right * Input.GetAxis("Horizontal");
+            float xVelocity = Mathf.Clamp(speed * 1 * Input.GetAxis("Horizontal"), -speed, speed);
+            xVel.x = xVelocity;
+            
         }
 
         if (rb.velocity.y < 0) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        } else if (rb.velocity.y > 0) {
+        } else if(rb.velocity.y > 0 && !Input.GetButton("Jump")) {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-        rb.velocity = xVel + yVel;
+        xVel.y = rb.velocity.y;
+        rb.velocity = xVel;
+        //rb.velocity = xVel + yVel;
     }
 
     private void jump() {
         if (Input.GetButtonDown("Jump") && !isJumping) {
             isJumping = true;
-            rb.velocity = Vector3.up * jumpForce;
+            rb.velocity = Vector2.up * jumpForce;
         }
     }
 

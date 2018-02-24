@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour {
+	public float fallMultiplier = 2.5f;
+
 	protected Transform player;
 	protected Rigidbody2D rb;
 
-	protected bool onTheAir;
-	public float fallMultiplier = 2.5f;
+	private Collider2D myCollider;
 
 	protected void Initialize(){
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		rb = GetComponent<Rigidbody2D> ();
 
-		onTheAir = false;
+		myCollider = GetComponent<Collider2D> ();
 	}
 
 	protected float GetZValue(){
@@ -22,7 +23,9 @@ public class EnemyMovement : MonoBehaviour {
 		return Mathf.Min (Vector3.Distance (pl, me), 50);
 	}
 
-	private void OnCollisionStay2D(Collision2D col) {
-			
+	private void OnCollisionEnter2D (Collision2D col) {
+		if (col.gameObject.tag == "Enemy") {
+			Physics2D.IgnoreCollision (col.collider, myCollider);
+		}
 	}
 }

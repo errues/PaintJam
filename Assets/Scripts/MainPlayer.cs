@@ -15,15 +15,12 @@ public class MainPlayer : MonoBehaviour {
     private bool isJumping;
     private Rigidbody2D rb;
     private Vector2 xVel;
-    private Vector2 yVel;
-
 
     // Use this for initialization
     void Start () {
         isJumping = false;
         rb = GetComponent<Rigidbody2D>();
         xVel = Vector2.zero;
-        yVel = Vector2.zero;
     }
 	
 	// Update is called once per frame
@@ -33,20 +30,6 @@ public class MainPlayer : MonoBehaviour {
 	}
 
     private void move() {
-
-        //xVel = rb.velocity.x * Vector2.right;
-        //if (!isJumping) { //Only add the horizontal speed if the player is on the ground
-        //    xVel = speed * Vector2.right * Input.GetAxis("Horizontal");
-        //}
-
-        //if (rb.velocity.y < 0) {
-        //    yVel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        //} else if (rb.velocity.y > 0) {
-        //    yVel += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-        //}
-
-        //rb.velocity = xVel + yVel;
-
         if (!isJumping) { //Only add the horizontal speed if the player is on the ground
             float xVelocity = Mathf.Clamp(speed * 1 * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
@@ -60,7 +43,6 @@ public class MainPlayer : MonoBehaviour {
         }
         xVel.y = rb.velocity.y;
         rb.velocity = xVel;
-        //rb.velocity = xVel + yVel;
     }
 
     private void jump() {

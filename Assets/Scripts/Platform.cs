@@ -18,7 +18,9 @@ public class Platform : MonoBehaviour {
     private bool loop;
 
     private void Start() {
+        if (type.Equals(PlatformType.Movable)) {
         transform.position = positions[0];
+        }
         nextPosIndex = 1;
         loop = !this.CompareTag("TriggerPlatform");
     }
@@ -41,23 +43,31 @@ public class Platform : MonoBehaviour {
     private void move() {
         if (checkPos(positions[nextPosIndex]) && loop) {
             nextPosIndex = (nextPosIndex + 1) % positions.Length;
-            if (nextPosIndex == 0) {
-                loop = loop = !this.CompareTag("TriggerPlatform");
+            if (nextPosIndex == 1) {
+                loop = !this.CompareTag("TriggerPlatform");
             }
         }
-        Debug.Log(nextPosIndex);
-        transform.position = Vector3.Lerp(transform.position, positions[nextPosIndex], speed * Time.deltaTime);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision) {
-        if (this.CompareTag("TriggerPlatform")) {
-            loop = true;
-            type = PlatformType.Movable;
+        if (loop) {
+            transform.position = Vector3.Lerp(transform.position, positions[nextPosIndex], speed * Time.deltaTime);
         }
-        collision.gameObject.transform.SetParent(this.gameObject.transform);
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (!collision.gameObject.GetComponent<Platform>() && !type.Equals(PlatformType.Static)) {
+            if (this.CompareTag("TriggerPlatform")) {
+                loop = true;
+            }
+            collision.gameObject.transform.SetParent(this.gameObject.transform);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
         collision.gameObject.transform.SetParent(null);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (!collision.gameObject.GetComponent<Platform>()) {
+            Debug.Log("hola");
+        }
     }
 }

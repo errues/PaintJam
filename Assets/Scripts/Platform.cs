@@ -89,7 +89,7 @@ public class Platform : MonoBehaviour {
         }
     }
 
-    private void OnDrawGizmosSelected() {
+    private void OnDrawGizmos() {
         Gizmos.color = new Color(0, 0, 0, 0.5F);
         Gizmos.DrawCube(transform.position, new Vector3(platformSize.x, platformSize.y, 0));
     }

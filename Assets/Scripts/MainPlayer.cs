@@ -31,6 +31,7 @@ public class MainPlayer : MonoBehaviour {
 	void Update () {
         move();
         jump();
+        wallJump();
         print(inContactWithWall + ", " + jumpWallDir);
 	}
 
@@ -50,22 +51,25 @@ public class MainPlayer : MonoBehaviour {
     }
 
     private void jump() {
-        if (Input.GetButtonDown("Jump") && !isJumping) {
+        if (Input.GetButtonDown("Jump") && !isJumping && !inContactWithWall) {
             isJumping = true;
-            if (inContactWithWall) {
-                rb.velocity = (Vector2.up + jumpWallDir) * jumpForce;
-            } else {
-                rb.velocity = Vector2.up * jumpForce;
-            }
+            rb.velocity = Vector2.up * jumpForce;
+        }
+    }
+    private void wallJump() {
+        if (inContactWithWall) {
+            isJumping = true;
+            //rb.velocity = (Vector2.up + jumpWallDir) * jumpForce;
+            rb.AddForce((Vector2.up + jumpWallDir) * jumpForce);
         }
     }
 
     private void OnCollisionStay2D(Collision2D col) {
         Platform plat;
+        if (!Input.GetButton("Jump")) { 
+            isJumping = false;
+        }
         if (plat = col.gameObject.GetComponent<Platform>()) {
-            if (!Input.GetButton("Jump")) { 
-                isJumping = false;
-            }
             foreach(ContactPoint2D contact in col.contacts) {
                 if (contact.normal.x == 1 || contact.normal.x == -1) {
                     inContactWithWall = true;

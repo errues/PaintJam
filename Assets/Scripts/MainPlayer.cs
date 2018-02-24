@@ -15,23 +15,28 @@ public class MainPlayer : MonoBehaviour {
     private bool isJumping;
     private Rigidbody2D rb;
     private Vector2 xVel;
+    private bool inContactWithWall;
+    private Vector2 jumpWallDir;
 
     // Use this for initialization
     void Start () {
         isJumping = false;
         rb = GetComponent<Rigidbody2D>();
         xVel = Vector2.zero;
+        inContactWithWall = false;
+        jumpWallDir = Vector2.zero;
     }
 	
 	// Update is called once per frame
 	void Update () {
         move();
         jump();
+        print(inContactWithWall + ", " + jumpWallDir);
 	}
 
     private void move() {
         if (!isJumping) { //Only add the horizontal speed if the player is on the ground
-            float xVelocity = Mathf.Clamp(speed * 1 * Input.GetAxis("Horizontal"), -speed, speed);
+            float xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
         }
 
@@ -47,13 +52,32 @@ public class MainPlayer : MonoBehaviour {
     private void jump() {
         if (Input.GetButtonDown("Jump") && !isJumping) {
             isJumping = true;
-            rb.velocity = Vector2.up * jumpForce;
+            if (inContactWithWall) {
+                rb.velocity = (Vector2.up + jumpWallDir) * jumpForce;
+            } else {
+                rb.velocity = Vector2.up * jumpForce;
+            }
         }
     }
 
     private void OnCollisionStay2D(Collision2D col) {
-        if (!Input.GetButton("Jump")) { 
-            isJumping = false;
+        Platform plat;
+        if (plat = col.gameObject.GetComponent<Platform>()) {
+            if (!Input.GetButton("Jump")) { 
+                isJumping = false;
+            }
+            foreach(ContactPoint2D contact in col.contacts) {
+                if (contact.normal.x == 1 || contact.normal.x == -1) {
+                    inContactWithWall = true;
+                    jumpWallDir.x = contact.normal.x;
+                }
+            }
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision) {
+        if (inContactWithWall) {
+            inContactWithWall = false;
+            jumpWallDir = Vector2.zero;
         }
     }
 }

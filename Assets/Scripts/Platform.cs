@@ -8,6 +8,8 @@ public class Platform : MonoBehaviour {
     //Public variables, setup in design
 	public enum PlatformType { Static, Movable, Destroyable };
     public PlatformType type;
+    [Header("Just for rectangular platforms")]
+    public Vector2Int platformSize;
     [Header("Introduce this if Movable")]
     [Range(2, 5)]
     public float speed;
@@ -16,10 +18,12 @@ public class Platform : MonoBehaviour {
     //Private variables, auto setup
     private int nextPosIndex;
     private bool loop;
+    private BoxCollider2D[] cols;
 
     private void Start() {
-        if (type.Equals(PlatformType.Movable)) {
-        transform.position = positions[0];
+        setColliders(gameObject.GetComponents<BoxCollider2D>());
+        if (!type.Equals(PlatformType.Static)) {
+            transform.position = positions[0];
         }
         nextPosIndex = 1;
         loop = !this.CompareTag("TriggerPlatform");
@@ -30,6 +34,20 @@ public class Platform : MonoBehaviour {
             move();
         }else if (type.Equals(PlatformType.Destroyable)) {
             // TODO
+        }
+    }
+
+    private void setColliders(BoxCollider2D[] cols) {
+        foreach (BoxCollider2D col in cols) {
+            if (col.isTrigger) {
+                Vector2 triggerSize = new Vector2(platformSize.x * 0.9f, platformSize.y * 0.05f);
+                Vector2 triggerPos = new Vector2(0, platformSize.y * 0.5f);
+                col.size = triggerSize;
+                col.offset = triggerPos;
+                transform.position = positions[0];
+            } else {
+                col.size = platformSize;
+            }
         }
     }
 

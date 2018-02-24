@@ -12,7 +12,7 @@ public class JumperMovement : EnemyMovement {
 		onGround = true;
 	}
 	
-	void Update () {
+	new void Update () {
 		base.Update ();
 
 		if (ShouldChase ()) {

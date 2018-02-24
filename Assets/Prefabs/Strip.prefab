@@ -459,8 +459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sizeX: 1
   sizeY: 1
-  fixedCamera: 1
   cameraZoom: 0
+  fixedCamera: 1
   topBorder: {fileID: 4672757934900942}
   downBorder: {fileID: 4643942331398630}
   leftBorder: {fileID: 4855182367954018}

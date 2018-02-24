@@ -32,7 +32,6 @@ public class MainPlayer : MonoBehaviour {
         move();
         jump();
         wallJump();
-        print(inContactWithWall + ", " + jumpWallDir);
 	}
 
     private void move() {

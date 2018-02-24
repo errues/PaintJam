@@ -8,7 +8,7 @@ public class Strip : MonoBehaviour {
 	[Range(1, 30)]
 	public int sizeY = 1;
 	[Range(0.1f, 15.0f)]
-	public float cameraZoom;
+	public float cameraZoom = 1;
 	public bool fixedCamera = true;
 
 	public Transform topBorder;
@@ -21,12 +21,7 @@ public class Strip : MonoBehaviour {
 
 
 	private void Awake(){
-		if (fixedCamera) {
-			// Calcula el tamaño que debe tener la cámara para abarcar toda la viñeta. OJO! Sólo para ratio 16:9
-			sizeForCamera = Mathf.Max ((float)sizeY / 2 + 0.1f, (float)sizeX / 32 * 9 + 0.1f);
-		} else {
-			sizeForCamera = cameraZoom;
-		}
+		CalculateSizeForCamera ();
 	}
 		
 	private void OnValidate(){
@@ -45,7 +40,18 @@ public class Strip : MonoBehaviour {
 		return fixedCamera;
 	}
 
+	// Necesario durante diseño, luego no
+	private void CalculateSizeForCamera(){
+		if (fixedCamera) {
+			// Calcula el tamaño que debe tener la cámara para abarcar toda la viñeta. OJO! Sólo para ratio 16:9
+			sizeForCamera = Mathf.Max ((float)sizeY / 2 + 0.1f, (float)sizeX / 32 * 9 + 0.1f);
+		} else {
+			sizeForCamera = cameraZoom;
+		}
+	}
+
 	public float GetSizeForCamera(){
+		CalculateSizeForCamera ();
 		return sizeForCamera;
 	}
 

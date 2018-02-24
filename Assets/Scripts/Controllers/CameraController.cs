@@ -13,35 +13,33 @@ public class CameraController : MonoBehaviour {
 	private Vector3 goalPosition;
 	private float goalSize;
 
-	public Strip currentStrip;
-	//private PageController pageController;
+	private Strip currentStrip;
+	private PageController pageController;
 	private bool scroll;
 
 	private GameObject player;
-	private Camera camera;
+	private Camera myCamera;
 
 	private void Awake(){
 		inTransition = false;
 		scroll = false;
+
+		myCamera = GetComponent<Camera> ();
 	}
-
+		
 	private void Start(){
-		player = GameObject.FindGameObjectWithTag ("Player");
-		camera = GetComponent<Camera> ();
-		//pageController = GameObject.FindGameObjectWithTag ("PageController").GetComponent<PageController> ();
-
-		// prueba
-		NextStrip(currentStrip);
+		pageController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<PageController> ();
 	}
 
 	private void Update(){
 		if (inTransition) {
 			transform.position = Vector3.Lerp (transform.position, goalPosition, Time.deltaTime * transitionSpeed);
-			camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, goalSize, Time.deltaTime * transitionSpeed);
+			myCamera.orthographicSize = Mathf.Lerp(myCamera.orthographicSize, goalSize, Time.deltaTime * transitionSpeed);
 			if (AlmostAtGoal()) {
 				transform.position = goalPosition;
-				camera.orthographicSize = goalSize;
+				myCamera.orthographicSize = goalSize;
 				inTransition = false;
+				pageController.CameraInPosition ();
 			}
 		}
 
@@ -49,6 +47,12 @@ public class CameraController : MonoBehaviour {
 			CalculateGoalPosition ();
 			transform.position = Vector3.Lerp (transform.position, goalPosition, Time.deltaTime * followingSpeed);
 		}
+	}
+
+	// Es llamado en el start de pagecontroller.
+	public void FirstStrip(Strip firstStrip){
+		player = GameObject.FindGameObjectWithTag ("Player");
+		NextStrip (firstStrip);
 	}
 
 	public void NextStrip(Strip nextStrip){
@@ -65,7 +69,6 @@ public class CameraController : MonoBehaviour {
 
 	private void CalculateGoalPosition(){
 		if (scroll) {
-			float x, y;
 			goalPosition = new Vector3 (player.transform.position.x, player.transform.position.y, -5);
 		} else {
 			Vector3 currentStripPosition = currentStrip.GetPosition ();
@@ -77,6 +80,6 @@ public class CameraController : MonoBehaviour {
 		return Mathf.Abs (transform.position.x - goalPosition.x) < minDifference &&
 		Mathf.Abs (transform.position.y - goalPosition.y) < minDifference &&
 		Mathf.Abs (transform.position.z - goalPosition.z) < minDifference &&
-		Mathf.Abs (camera.orthographicSize - goalSize) < minDifference;
+		Mathf.Abs (myCamera.orthographicSize - goalSize) < minDifference;
 	}
 }

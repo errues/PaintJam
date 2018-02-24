@@ -8,10 +8,11 @@ public class Platform : MonoBehaviour {
     //Public variables, setup in design
 	public enum PlatformType { Static, Movable, Destroyable };
     public PlatformType type;
+    [Header("Just for rectangular platforms")]
+    public Vector2Int platformSize;
     [Header("Introduce this if Movable")]
     [Range(2, 5)]
     public float speed;
-    public Vector2Int platformSize;
     public Vector3[] positions;
 
     //Private variables, auto setup

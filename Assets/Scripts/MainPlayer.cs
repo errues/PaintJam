@@ -33,7 +33,6 @@ public class MainPlayer : MonoBehaviour {
         if (!isJumping) { //Only add the horizontal speed if the player is on the ground
             float xVelocity = Mathf.Clamp(speed * 1 * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
-            
         }
 
         if (rb.velocity.y < 0) {

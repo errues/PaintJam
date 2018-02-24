@@ -487,6 +487,11 @@ Prefab:
       propertyPath: platformSize.y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 251644776575206014, guid: 24f1e3df2a05ad54eb85bcf5069b151d,
+        type: 2}
+      propertyPath: m_SurfaceArc
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24f1e3df2a05ad54eb85bcf5069b151d, type: 2}
   m_IsPrefabParent: 0
@@ -538,6 +543,11 @@ Prefab:
       propertyPath: platformSize.y
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 251644776575206014, guid: 24f1e3df2a05ad54eb85bcf5069b151d,
+        type: 2}
+      propertyPath: m_SurfaceArc
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24f1e3df2a05ad54eb85bcf5069b151d, type: 2}
   m_IsPrefabParent: 0
@@ -550,11 +560,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4117656158709936, guid: 80f587251d61b944b906685a2bb2fb79, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.4622792
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4117656158709936, guid: 80f587251d61b944b906685a2bb2fb79, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.21
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4117656158709936, guid: 80f587251d61b944b906685a2bb2fb79, type: 2}
       propertyPath: m_LocalPosition.z
@@ -627,15 +637,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 61062055087778684, guid: 24f1e3df2a05ad54eb85bcf5069b151d,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114856077250610464, guid: 24f1e3df2a05ad54eb85bcf5069b151d,
         type: 2}
       propertyPath: platformSize.x
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 251644776575206014, guid: 24f1e3df2a05ad54eb85bcf5069b151d,
+        type: 2}
+      propertyPath: m_SurfaceArc
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24f1e3df2a05ad54eb85bcf5069b151d, type: 2}

@@ -28,18 +28,14 @@ public class MainPlayer : MonoBehaviour {
         inContactWithWall = false;
         jumpWallDir = Vector2.zero;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         move();
         jump();
         wallJump();
-<<<<<<< HEAD
         print("groundeD: " + grounded);
     }
-=======
-	}
->>>>>>> 3fa5df3c9a10236500f452f628029f3b597ccb88
 
     private void move() {
         if (!isJumping && !inContactWithWall && grounded) { //Only add the horizontal speed if the player is on the ground

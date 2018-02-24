@@ -11,6 +11,8 @@ public class Strip : MonoBehaviour {
 	public float cameraZoom = 1f;
 	public bool fixedCamera = true;
 
+	public AudioClip theme;
+
 	public Transform topBorder;
 	public Transform downBorder;
 	public Transform leftBorder;
@@ -57,5 +59,9 @@ public class Strip : MonoBehaviour {
 
 	public Vector3 GetPosition(){
 		return transform.position;
+	}
+
+	public AudioClip GetTheme(){
+		return theme;
 	}
 }

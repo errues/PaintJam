@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour {
 	public float followingSpeed = 1f;
 
 	public float minDifference = 0.05f;
+	public float distanceToPlane = 50f;
 
 	private bool inTransition;
 
@@ -69,10 +70,10 @@ public class CameraController : MonoBehaviour {
 
 	private void CalculateGoalPosition(){
 		if (scroll) {
-			goalPosition = new Vector3 (player.transform.position.x, player.transform.position.y, -5);
+			goalPosition = new Vector3 (player.transform.position.x, player.transform.position.y, -distanceToPlane);
 		} else {
 			Vector3 currentStripPosition = currentStrip.GetPosition ();
-			goalPosition = new Vector3 (currentStripPosition.x, currentStripPosition.y, -5);
+			goalPosition = new Vector3 (currentStripPosition.x, currentStripPosition.y, -distanceToPlane);
 		}
 	}
 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Strip : MonoBehaviour {
-	[Range(1, 30)]
+	[Range(1, 150)]
 	public int sizeX = 1;
-	[Range(1, 30)]
+	[Range(1, 150)]
 	public int sizeY = 1;
-	[Range(0.1f, 15.0f)]
-	public float cameraZoom = 1;
+	[Range(0.1f, 75.0f)]
+	public float cameraZoom = 1f;
 	public bool fixedCamera = true;
 
 	public Transform topBorder;

@@ -153,9 +153,9 @@ public class EnemyHealth : MonoBehaviour {
 			if (Y == B)
 				c = new Color (0, 1, 0, alpha);
 			else if (Y < B)
-				c = Color.Lerp (new Color (0, 1, 0, alpha), new Color (0, 0, 1, alpha), (float)(R - B) / maxHealth);
+				c = Color.Lerp (new Color (0, 1, 0, alpha), new Color (0, 0, 1, alpha), (float)(B - Y) / maxHealth);
 			else
-				c = Color.Lerp (new Color (0, 1, 0, alpha), new Color (1, 1, 0, alpha), (float)(B - R) / maxHealth);
+				c = Color.Lerp (new Color (0, 1, 0, alpha), new Color (1, 1, 0, alpha), (float)(Y - B) / maxHealth);
 			break;
 		case BasicColors.NEGRO:
 			// TODO

@@ -11,7 +11,7 @@ public class Platform : MonoBehaviour {
     [Header("Just for rectangular platforms")]
     public Vector2Int platformSize;
     [Header("Introduce this if Movable")]
-    [Range(2, 5)]
+    [Range(0.5f, 5)]
     public float speed;
     public Vector3[] positions;
 

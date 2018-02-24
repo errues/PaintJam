@@ -164,10 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0effeec42a82748b7bf72038356690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallMultiplier: 2.5
   speed: 5
   chasingDistance: 5
   maxHeightDifference: 0.5
+  fallMultiplier: 2.5
 --- !u!212 &212793851441708588
 SpriteRenderer:
   m_ObjectHideFlags: 1

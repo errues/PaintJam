@@ -20,8 +20,11 @@ public class EnemyHealth : MonoBehaviour {
 	private int Y, R, B;
 	private float alpha;
 
+	private bool dead;
+
 	private void Start(){
 		alpha = 1f;
+		dead = false;
 
 		filling = GetComponent<EnemySpriteManager> ().filling;
 		border = GetComponent<EnemySpriteManager> ().border;
@@ -238,6 +241,11 @@ public class EnemyHealth : MonoBehaviour {
 		filling.sprite = deadSpriteFilling;
 		border.sprite = deadSpriteBorder;
 		transform.parent.GetComponent<EnemyController> ().EnemyDied ();
+		dead = true;
 		Object.Destroy (this.gameObject, corpseTime);
+	}
+
+	public bool IsDead(){
+		return dead;
 	}
 }

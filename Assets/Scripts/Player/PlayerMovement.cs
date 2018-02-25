@@ -157,9 +157,8 @@ public class PlayerMovement : MonoBehaviour {
             this.transform.SetParent(null);
         }
     }
-
-    public bool getFacing() {
-        return facingRight;
-    }
-
+  
+	public bool GetFacing(){
+		return facingRight;
+	}
 }

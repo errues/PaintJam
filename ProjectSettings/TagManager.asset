@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Border
   - Platform
+  - EnemyController
   layers:
   - Default
   - TransparentFX

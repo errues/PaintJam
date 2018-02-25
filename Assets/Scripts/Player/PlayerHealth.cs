@@ -33,6 +33,8 @@ public class PlayerHealth : MonoBehaviour {
 
     private void Update() {
         checkDeath();
+        anim.SetBool("Invulnerable", isInvulnerable && !dead);
+        print(life + " " + isInvulnerable);
     }
 
     private void checkDeath() {
@@ -73,5 +75,6 @@ public class PlayerHealth : MonoBehaviour {
 	public void Reborn(){
 		life = maxLife;
 		dead = false;
+        anim.SetTrigger("Reborn");
 	}
 }

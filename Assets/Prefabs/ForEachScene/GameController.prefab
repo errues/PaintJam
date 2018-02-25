@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strips: []
   firstClip: {fileID: 8300000, guid: 7dbf03402abea465a9407e7eb9c69aab, type: 3}
+  deadTime: 2
 --- !u!114 &114522164322802334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,3 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeSceneClip: {fileID: 8300000, guid: 4a989f3902b9042b3bd41d17c1d1333f, type: 3}
+  gameOverClip:
+  - {fileID: 8300000, guid: e520f7efa1575413c8d2fc11700b555f, type: 3}
+  - {fileID: 8300000, guid: b9b88a7d58ab14b109519159b8445e8a, type: 3}

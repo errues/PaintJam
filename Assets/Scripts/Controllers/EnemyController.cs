@@ -14,4 +14,11 @@ public class EnemyController : MonoBehaviour {
 			pageController.NoEnemiesRemaining ();
 		}
 	}
+
+	public void RemoveAllEnemies(){
+		for (int i = transform.childCount - 1; i >= 0; --i) {
+			print (true);
+			Object.Destroy (transform.GetChild (i).gameObject);
+		}
+	}
 }

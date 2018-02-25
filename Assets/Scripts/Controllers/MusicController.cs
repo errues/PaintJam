@@ -5,6 +5,7 @@ using UnityEngine;
 public class MusicController : MonoBehaviour {
 	private AudioSource audioSource;
 	public AudioClip changeSceneClip;
+	public AudioClip[] gameOverClip;
 
 	void Awake () {
 		audioSource = GetComponent<AudioSource> ();		
@@ -21,5 +22,10 @@ public class MusicController : MonoBehaviour {
 
 	public void Stop(){
 		audioSource.Stop ();
+	}
+
+	public void PlayGameOverClip(){
+		audioSource.Stop ();
+		audioSource.PlayOneShot (gameOverClip [Random.Range (0, gameOverClip.Length)]);
 	}
 }

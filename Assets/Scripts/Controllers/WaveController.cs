@@ -41,4 +41,10 @@ public class WaveController : MonoBehaviour {
 		}
 		return false;
 	}
+
+	public void Reset(){
+		foreach (EnemySpawner es in enemySpawners) {
+			es.Reset ();
+		}
+	}
 }

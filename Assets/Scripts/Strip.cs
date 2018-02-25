@@ -81,4 +81,9 @@ public class Strip : MonoBehaviour {
 	public bool StillSpawning(){
 		return waveController.StillSpawning ();
 	}
+
+	public void Reset(){
+		GameObject.FindGameObjectWithTag ("EnemyController").GetComponent<EnemyController> ();
+		waveController.Reset ();
+	}
 }

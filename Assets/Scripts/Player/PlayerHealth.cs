@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
     [Range(3,6)]
-    public int life;
+    public int maxLife = 3;
     [Range(3,5)]
     public float cdInvulnerability;
 
@@ -15,8 +15,12 @@ public class PlayerHealth : MonoBehaviour {
 	private SpriteRenderer sprite;
 
 	private bool hidden;
+	private int life;
+	private bool dead;
 
     private void Start() {
+		life = maxLife;
+		dead = false;
         isInvulnerable = false;
         anim = GetComponent<Animator>();
 		sprite = transform.GetComponentInChildren<SpriteRenderer> ();
@@ -32,8 +36,11 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     private void checkDeath() {
-        if(life <= 0) {
+        if(life <= 0 && !dead) {
             anim.SetTrigger("Dead");
+			GameObject.FindGameObjectWithTag ("GameController").GetComponent<PageController> ().ResetStrip ();
+			GameObject.FindGameObjectWithTag ("GameController").GetComponent<MusicController> ().PlayGameOverClip ();
+			dead = true;
         }
     }
 
@@ -61,5 +68,10 @@ public class PlayerHealth : MonoBehaviour {
 
 	public bool IsHidden(){
 		return hidden;
+	}
+
+	public void Reborn(){
+		life = maxLife;
+		dead = false;
 	}
 }

@@ -33,14 +33,17 @@ public class EnemySpawner : MonoBehaviour {
 	private bool comb;
 	private EnemyType[] enemiesToSpawn;
 
+	private bool hardReset;
+
 	private void Awake(){
 		spawnIndex = 0;
 		waveIndex = 0;
-		
+
 		audioSource = GetComponent<AudioSource> ();
 		enemyController = GameObject.FindGameObjectWithTag ("EnemyController").GetComponent<EnemyController> ();
 
 		spawning = false;
+		hardReset = false;
 	}
 
 	public void Spawn(){
@@ -55,18 +58,13 @@ public class EnemySpawner : MonoBehaviour {
 					CreateEnemy (et, life, comb);
 				}
 				break;
-			case SpawnMode.ORDER:
+			default:
 				spawning = true;
 				spawnIndex = 0;
-				CreateEnemyArray (false);
+				CreateEnemyArray (waves [waveIndex].spawnMode == SpawnMode.RANDOM);
+				hardReset = false;
 				StartCoroutine (DelayedSpawning (waves [waveIndex].timeBetweenSpawn));
-				break;
-			case SpawnMode.RANDOM:
-				spawning = true;
-				spawnIndex = 0;
-				CreateEnemyArray (true);
-				StartCoroutine (DelayedSpawning (waves [waveIndex].timeBetweenSpawn));
-				break;
+				break;			
 			}
 		}
 		waveIndex++;
@@ -124,19 +122,27 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	IEnumerator DelayedSpawning(float t){
-		audioSource.PlayOneShot (enemySpawnClips [Random.Range (0, enemySpawnClips.Length)]);
-		CreateEnemy (enemiesToSpawn [spawnIndex], life, comb);
-		spawnIndex++;
-		if (spawnIndex >= enemiesToSpawn.Length) {
-			spawning = false;
-		} else {
-			yield return new WaitForSeconds (t);
-			StartCoroutine (DelayedSpawning (t));
+		if (!hardReset) {
+			audioSource.PlayOneShot (enemySpawnClips [Random.Range (0, enemySpawnClips.Length)]);
+			CreateEnemy (enemiesToSpawn [spawnIndex], life, comb);
+			spawnIndex++;
+			if (spawnIndex >= enemiesToSpawn.Length) {
+				spawning = false;
+			} else {
+				yield return new WaitForSeconds (t);
+				StartCoroutine (DelayedSpawning (t));
+			}
 		}
 	}
 
 	private void OnDrawGizmos(){
 		Gizmos.color = Color.yellow;
 		Gizmos.DrawSphere (transform.position, 1);
+	}
+
+	public void Reset(){
+		spawnIndex = 0;
+		waveIndex = 0;
+		hardReset = true;
 	}
 }

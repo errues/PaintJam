@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PageController : MonoBehaviour {
 	public Strip[] strips;
 	public AudioClip firstClip;
+	public float deadTime = 2;
 
 	private int currentStrip;
 
@@ -61,5 +62,19 @@ public class PageController : MonoBehaviour {
 		if (!strips [currentStrip].StillSpawning ()) {
 			strips [currentStrip].NextWave ();
 		}
+	}
+
+	public void ResetStrip(){
+		cameraController.CenterPlayer ();
+		StartCoroutine (DelayedReset());
+	}
+
+	IEnumerator DelayedReset(){
+		yield return new WaitForSeconds (deadTime);
+		GameObject.FindGameObjectWithTag ("EnemyController").GetComponent<EnemyController> ().RemoveAllEnemies (); // Qué cutre!
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth> ().Reborn (); // Qué cutre!
+		strips [currentStrip].Reset ();
+		currentStrip--;
+		NextStrip ();
 	}
 }

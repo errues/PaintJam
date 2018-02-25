@@ -68,6 +68,13 @@ public class CameraController : MonoBehaviour {
 		CalculateGoalPosition ();
 	}
 
+	public void CenterPlayer(){
+		inTransition = true;
+		goalSize = 0.1f;
+		scroll = true;
+		CalculateGoalPosition ();
+	}
+
 	private void CalculateGoalPosition(){
 		if (scroll) {
 			goalPosition = new Vector3 (player.transform.position.x, player.transform.position.y, -distanceToPlane);

@@ -71,7 +71,11 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	public void Reborn(){
-		life = maxLife;
 		dead = false;
+		Heal ();
+	}
+
+	public void Heal(){
+		life = maxLife;
 	}
 }

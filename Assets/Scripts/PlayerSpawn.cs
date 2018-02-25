@@ -13,6 +13,7 @@ public class PlayerSpawn : MonoBehaviour {
     public void Spawn() {
 		player.transform.position = transform.position;
 		player.GetComponent<PlayerHealth> ().Show ();
+		player.GetComponent<PlayerHealth> ().Heal ();
 		player.GetComponent<PlayerSounds> ().playShow ();        
     }
 

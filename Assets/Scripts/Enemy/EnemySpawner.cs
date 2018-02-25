@@ -41,6 +41,9 @@ public class EnemySpawner : MonoBehaviour {
 		enemyController = GameObject.FindGameObjectWithTag ("EnemyController").GetComponent<EnemyController> ();
 
 		spawning = false;
+		print (waves.Length);
+		print (waveIndex);
+
 	}
 
 	public void Spawn(){

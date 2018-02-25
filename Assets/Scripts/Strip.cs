@@ -22,10 +22,12 @@ public class Strip : MonoBehaviour {
 	private float sizeForCamera;
 
 	private WaveController waveController;
+	private PlayerSpawn playerSpawn;
 
 	private void Awake(){
 		CalculateSizeForCamera ();
 		waveController = GetComponentInChildren<WaveController> ();
+		playerSpawn = GetComponentInChildren<PlayerSpawn> ();
 	}
 		
 	private void OnValidate(){
@@ -65,6 +67,11 @@ public class Strip : MonoBehaviour {
 
 	public AudioClip GetTheme(){
 		return theme;
+	}
+
+	public void FirstWave(){
+		playerSpawn.Spawn ();
+		NextWave ();
 	}
 
 	public void NextWave(){

@@ -257,8 +257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionTime: 0.5
-  explosionBorder: {fileID: 21300000, guid: bc26df2b6acf8434fb9160fa6bcc14f6, type: 3}
-  explosionFilling: {fileID: 21300000, guid: 023e0f0a0449949fcb9c191b8462b415, type: 3}
+  explosionBorder: {fileID: 21300000, guid: 16cdfdd46be284480bec43ef30a3a066, type: 3}
+  explosionFilling: {fileID: 21300000, guid: 871c3b0e487ea4f9f99f63ccb5d39a6e, type: 3}
 --- !u!114 &114406538502868124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -293,8 +293,8 @@ MonoBehaviour:
   maxHealth: 10
   maxTransparency: 0.3
   corpseTime: 1
-  deadSpriteFilling: {fileID: 21300000, guid: deaf6571b4f714eeb8837233bbc179fd, type: 3}
-  deadSpriteBorder: {fileID: 21300000, guid: 6ed9e238955a545b4ac38ae08471e9d1, type: 3}
+  deadSpriteFilling: {fileID: 21300000, guid: 628b6e3fd589f4566b7e843c7759716b, type: 3}
+  deadSpriteBorder: {fileID: 21300000, guid: 4bccb2cc9e2f84896899d0ba119c77ea, type: 3}
 --- !u!114 &114859216236229752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -344,12 +344,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6ed9e238955a545b4ac38ae08471e9d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5bc97f816f05e4bdb96bcc6a726c8936, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -388,12 +388,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: deaf6571b4f714eeb8837233bbc179fd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06869cad89ba54472acc42b0428a7333, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PageController : MonoBehaviour {
 	public Strip[] strips;
+
 	private int currentStrip;
 
 	private CameraController cameraController;
@@ -26,20 +28,20 @@ public class PageController : MonoBehaviour {
 
 	private void Update(){
 		if (firstFrame) {
-			strips [currentStrip].NextWave ();
+			//strips [currentStrip].FirstWave ();
 			firstFrame = false;
 		}
 	}			
 	
 	public void NextStrip(){
+		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth> ().Hide (); // Qué cutre!
 		currentStrip++;
 		if (currentStrip >= strips.Length) {
-			//finish
+			SceneManager.LoadScene ("main");
 		} else {
 			cameraController.NextStrip (strips[currentStrip]);
 			musicController.Stop ();
 			musicController.PlayChangeStripClip ();
-			strips [currentStrip].NextWave ();
 		}
 	}
 
@@ -49,12 +51,9 @@ public class PageController : MonoBehaviour {
 		cameraController.NextStrip (strips[currentStrip]);
 	}
 
-	public void PlayerDissapeared(){
-
-	}
-
 	public void CameraInPosition(){
 		musicController.PlayTheme (strips [currentStrip].GetTheme ());
+		strips [currentStrip].FirstWave ();
 	}
 
 	public void NoEnemiesRemaining(){

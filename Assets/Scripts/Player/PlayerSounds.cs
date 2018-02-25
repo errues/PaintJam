@@ -7,6 +7,7 @@ public class PlayerSounds : MonoBehaviour {
     public AudioClip[] jumpSound;
     public AudioClip[] stepSound;
     public AudioClip[] shootSound;
+	public AudioClip[] showSound;
 
     private AudioSource player;
 
@@ -20,11 +21,15 @@ public class PlayerSounds : MonoBehaviour {
     }
 
     public void playJump() {
-        player.PlayOneShot(jumpSound[Random.Range(0, stepSound.Length)]);
+		player.PlayOneShot(jumpSound[Random.Range(0, jumpSound.Length)]);
     }
 
     public void playShoot() {
-        player.PlayOneShot(shootSound[Random.Range(0, stepSound.Length)]);
+		player.PlayOneShot(shootSound[Random.Range(0, shootSound.Length)]);
     }
+
+	public void playShow(){
+		player.PlayOneShot(showSound[Random.Range(0, showSound.Length)]);
+	}
 
 }

@@ -247,6 +247,9 @@ MonoBehaviour:
   maxHeightDifference: 2
   fallMultiplier: 2.5
   jumpForce: 5
+  jumpingFillSprite: {fileID: 21300000, guid: 4148d3aee9e4541608bdb63e8d6c49be, type: 3}
+  jumpingBorderSprite: {fileID: 21300000, guid: a41c5e69ee1434120b157ce98cb0fc11,
+    type: 3}
 --- !u!114 &114209443670256918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,8 +265,8 @@ MonoBehaviour:
   maxHealth: 10
   maxTransparency: 0.3
   corpseTime: 1
-  deadSpriteFilling: {fileID: 21300000, guid: 0f7b47039ac8c48b2a97327b2a143c22, type: 3}
-  deadSpriteBorder: {fileID: 21300000, guid: 28bfcd217460249059ada0cc4912e035, type: 3}
+  deadSpriteFilling: {fileID: 21300000, guid: 2ee75379a387d43b0bfdc42aabc4cf9e, type: 3}
+  deadSpriteBorder: {fileID: 21300000, guid: 5aad1aa3fcc944fb682b78c53542f0a6, type: 3}
 --- !u!114 &114568627928162844
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -335,12 +338,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb96765ab9be84e47b7857355a5944a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fe434d0148bb942509b96b722269667c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -379,12 +382,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2668ac6d8280e47a2952aef97bcba566, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2efba8b398b434bf5b7d80cbd2233097, type: 3}
   m_Color: {r: 0, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

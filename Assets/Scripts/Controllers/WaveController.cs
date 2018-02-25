@@ -24,7 +24,7 @@ public class WaveController : MonoBehaviour {
 			}
 		}
 
-		if (finished) {
+		if (finished) {			
 			pageController.NextStrip ();
 		} else {
 			foreach (EnemySpawner es in enemySpawners) {

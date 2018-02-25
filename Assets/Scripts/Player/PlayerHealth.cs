@@ -12,9 +12,12 @@ public class PlayerHealth : MonoBehaviour {
     private bool isInvulnerable;
     private Animator anim;
 
+	private SpriteRenderer sprite;
+
     private void Start() {
         isInvulnerable = false;
         anim = GetComponent<Animator>();
+		sprite = transform.GetComponentInChildren<SpriteRenderer> ();
     }
 
     public void takeDamage(int dmg = 1) {
@@ -42,4 +45,12 @@ public class PlayerHealth : MonoBehaviour {
     private void resetInvulnerability() {
         isInvulnerable = false;
     }
+
+	public void Hide(){
+		sprite.enabled = false;
+	}
+
+	public void Show(){
+		sprite.enabled = true;
+	}
 }

@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviour {
 
-    public PlayerMovement player;
+	private GameObject player;
 
-    public void spawn() {
-        if (GameObject.Find("Player(Clone)") != null) {
-            Destroy(GameObject.Find("Player(Clone)"));
-        }
-        PlayerMovement newPlayer = Instantiate(player, this.transform);
-        newPlayer.transform.SetParent(null);
+	private void Start(){
+		player = GameObject.FindGameObjectWithTag ("Player");
+	}
+
+    public void Spawn() {
+		player.transform.position = transform.position;
+		player.GetComponent<PlayerHealth> ().Show ();
+		player.GetComponent<PlayerSounds> ().playShow ();        
     }
 
     private void OnDrawGizmos() {

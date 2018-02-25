@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-    [Range(2, 5)]
+    [Range(2, 10)]
     public float speed;
     [Range(2, 10)]
     public float jumpForce;
@@ -17,34 +17,68 @@ public class PlayerMovement : MonoBehaviour {
     private bool inContactWithWall;
     private Vector2 jumpWallDir;
     private bool grounded;
+    private bool jumpWall;
+    private bool facingRight;
+    private Animator anim;
 
     // Use this for initialization
     void Start() {
+        jumpWall = false;
         rb = GetComponent<Rigidbody2D>();
         xVel = Vector2.zero;
         grounded = false;
         inContactWithWall = false;
+        facingRight = true;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
         moveHorizontal();
+        selectFacing();
+        setAnimation();
         fall();
         jump();
         wallJump();
-        if (grounded && inContactWithWall) {
+        if (jumpWall) {
             inContactWithWall = false;
             jumpWallDir = Vector2.zero;
         }
+<<<<<<< HEAD
+=======
+        if (grounded && jumpWall) {
+            jumpWall = false;
+        }
+        
+>>>>>>> 75a1934c9a64e47a745c63053a8e60334f377622
     }
 
     private void moveHorizontal() {
-        if (!inContactWithWall) {
+        if (!inContactWithWall && !jumpWall) {
             float xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
         }
+        // TODO POSSIBLE add jump control with horizontal movement
         xVel.y = rb.velocity.y;
         rb.velocity = xVel;
+    }
+
+    private void setAnimation() {
+        anim.SetBool("grounded", grounded);
+        anim.SetBool("Moving", rb.velocity.x != 0);
+    }
+
+    private void selectFacing() {
+        if(facingRight && rb.velocity.x < 0) {
+            flip();
+        }else if(!facingRight && rb.velocity.x > 0) {
+            flip();
+        }
+    }
+
+    private void flip() {
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+        facingRight = !facingRight;
     }
 
     private void fall() {
@@ -67,8 +101,8 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Jump") && !grounded && inContactWithWall) {
             xVel = (Vector2.up + jumpWallDir) * jumpForce;
             rb.velocity += xVel;
-            inContactWithWall = false;
             jumpWallDir = Vector2.zero;
+            jumpWall = true;
         }
     }
 
@@ -86,7 +120,18 @@ public class PlayerMovement : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("Platform") || collision.CompareTag("Border") || collision.CompareTag("TriggerPlatform")) {
             grounded = true;
+            inContactWithWall = false;
+            if(collision.CompareTag("Platform") || collision.CompareTag("TriggerPlatform")) {
+                Platform plat = collision.gameObject.GetComponent<Platform>();
+                if (plat.type.Equals(Platform.PlatformType.Movable)) {
+                    this.transform.SetParent(plat.transform);
+                }
+            }
         }
     }
-
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (this.transform.parent) {
+            this.transform.SetParent(null);
+        }
+    }
 }

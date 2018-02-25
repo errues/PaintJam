@@ -70,25 +70,6 @@ public class Platform : MonoBehaviour {
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision) {
-        if (!collision.gameObject.GetComponent<Platform>() && !type.Equals(PlatformType.Static)) {
-            if (this.CompareTag("TriggerPlatform")) {
-                loop = true;
-            }
-            collision.gameObject.transform.SetParent(this.gameObject.transform);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) {
-        collision.gameObject.transform.SetParent(null);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (!collision.gameObject.GetComponent<Platform>()) {
-            
-        }
-    }
-
     private void OnDrawGizmos() {
         Gizmos.color = new Color(0, 0, 0, 0.5F);
         Gizmos.DrawCube(transform.position, new Vector3(platformSize.x, platformSize.y, 0));

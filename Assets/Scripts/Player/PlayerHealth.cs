@@ -11,12 +11,17 @@ public class PlayerHealth : MonoBehaviour {
 
     private bool isInvulnerable;
 
+    public void takeDamage(int dmg = 1) {
+        getDamage(dmg);
+    }
+
     private void Start() {
         isInvulnerable = false;
     }
 
     private void Update() {
         checkDeath();
+        print(life);
     }
 
     private void checkDeath() {
@@ -24,7 +29,6 @@ public class PlayerHealth : MonoBehaviour {
             print("ESTAS MUERTO");
         }
     }
-
 
     private void getDamage(int dmg) {
         life -= dmg;

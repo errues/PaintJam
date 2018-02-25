@@ -6,14 +6,19 @@ public class GunnedMovement : EnemyMovement {
 	public float stopChasingDistance = 10;
 	public float timeBetweenShots = 5;
 	public float maxHeighDifferenceForShooting = 1.5f;
+	public float gunHeight = 1.5f;
 
 	public GameObject enemyBullet;
 
+	public AudioClip[] shotClips;
+
 	private float lastShotTime;
+	private AudioSource audioSource;
 
 	void Start () {
 		base.Initialize ();
 		lastShotTime = Time.time;
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	new void Update () {		
@@ -36,29 +41,34 @@ public class GunnedMovement : EnemyMovement {
 	}
 
 	private bool ShouldShoot(){
+		bool shoot = false;
 		if (Time.time - lastShotTime > timeBetweenShots) {
 			if (Mathf.Abs (player.position.y - transform.position.y) <= maxHeighDifferenceForShooting) {
-				Debug.DrawRay(transform.position, player.position - transform.position);
-				RaycastHit2D[] hits = Physics2D.RaycastAll (transform.position, player.position - transform.position);
-				if (hits.Length > 1) {
-					if (hits[1].collider != null) {
-						if (hits[1].collider.gameObject.tag == "Player") {
-							print ("FUEGO!");
-							return true;
+				Vector3 origin = new Vector3 (transform.position.x, transform.position.y + gunHeight, 0);
+				Vector3 target = new Vector3 (player.position.x, transform.position.y + gunHeight, 0);
+				RaycastHit2D[] hits = Physics2D.RaycastAll (origin, target - origin);
+				foreach (RaycastHit2D h in hits) {
+					if (h.collider != null) {
+						if (h.collider.gameObject.tag == "Player") {
+							shoot = true;
 						}
 					}
 				}
 			}			
 		}
-		return false;
+		return shoot;
 	}
 
 	private void Shoot(){
 		lastShotTime = Time.time;
-		Transform bullet = Object.Instantiate (enemyBullet, new Vector3(transform.position.x, player.position.y + 1f, -1), new Quaternion()).transform;
-		Vector3 dir = Vector3.right;
-		if (player.transform.position.x < transform.position.x)
-			dir = -Vector3.right;
-		bullet.GetComponent<EnemyBullet>().SetDirection(dir); 
+		bool left = player.transform.position.x < transform.position.x;
+		float x = 1f;
+		if (left)
+			x = -1f;
+		Transform bullet = Object.Instantiate (enemyBullet, new Vector3(transform.position.x + x, transform.position.y + gunHeight, -1), new Quaternion()).transform;
+		bullet.GetComponent<EnemyBullet>().Initialize(left);
+
+		int r = Random.Range (0, shotClips.Length);
+		audioSource.PlayOneShot (shotClips [r]);
 	}
 }

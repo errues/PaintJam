@@ -34,7 +34,6 @@ public class MainPlayer : MonoBehaviour {
         move();
         jump();
         wallJump();
-        print("groundeD: " + grounded);
     }
 
     private void move() {

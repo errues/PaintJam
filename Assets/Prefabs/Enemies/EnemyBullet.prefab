@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4096900705871328}
   - component: {fileID: 114185548406654614}
   - component: {fileID: 61799800616460532}
+  - component: {fileID: 50813242721106786}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -71,6 +72,26 @@ Transform:
   m_Father: {fileID: 4096900705871328}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50813242721106786
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963214432882514}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!61 &61799800616460532
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -107,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24d9baf48e923094fb09078ea1b88082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
 --- !u!212 &212203081541588184
 SpriteRenderer:
   m_ObjectHideFlags: 1

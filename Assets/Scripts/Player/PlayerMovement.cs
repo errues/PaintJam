@@ -44,14 +44,11 @@ public class PlayerMovement : MonoBehaviour {
             inContactWithWall = false;
             jumpWallDir = Vector2.zero;
         }
-<<<<<<< HEAD
-=======
+
         if (grounded && jumpWall) {
             jumpWall = false;
         }
-        
->>>>>>> 75a1934c9a64e47a745c63053a8e60334f377622
-    }
+
 
     private void moveHorizontal() {
         if (!inContactWithWall && !jumpWall) {

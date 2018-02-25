@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-		if (!playerHealth.IsHidden ()) {
+		if (!playerHealth.IsHidden () && Time.timeScale != 0) {
 			moveHorizontal();
 			crouch();
 			selectFacing();

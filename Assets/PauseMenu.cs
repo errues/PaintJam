@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour {
 
@@ -18,6 +18,14 @@ public class PauseMenu : MonoBehaviour {
         showHideMenu();
     }
 
+    public void resume() {
+        paused = false;
+    }
+
+    public void toMainMenu() {
+        SceneManager.LoadScene(0);
+    }
+
     private void Update() {
         if (Input.GetButtonDown("Pause")) {
             paused = !paused;
@@ -25,11 +33,11 @@ public class PauseMenu : MonoBehaviour {
         showHideMenu();
         if (paused) {
             Time.timeScale = 0;
-            
         } else {
             Time.timeScale = 1;
         }
     }
+
 
     private void showHideMenu() {
         ResumeButton.enabled = paused;

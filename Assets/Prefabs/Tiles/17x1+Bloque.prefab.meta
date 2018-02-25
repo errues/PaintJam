@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Tiles/17x1+Bloque.prefab.meta
 guid: 9483b89628a7341148f5943a95e39437
 timeCreated: 1519510224
+=======
+guid: 6b35d65caef57f041b2521bf6c9e7a3b
+folderAsset: yes
+timeCreated: 1519552774
+>>>>>>> e2c15f3af392cf5f8b73b7878bc1ac5b9cf4e902:Assets/Sprites/Personajes/Armado.meta
 licenseType: Free
 NativeFormatImporter:
   externalObjects: {}

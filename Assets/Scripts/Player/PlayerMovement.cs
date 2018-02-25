@@ -19,27 +19,27 @@ public class PlayerMovement : MonoBehaviour {
     private bool grounded;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         xVel = Vector2.zero;
         grounded = false;
         inContactWithWall = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update() {
         moveHorizontal();
         fall();
         jump();
         wallJump();
-        if(grounded && inContactWithWall) {
+        if (grounded && inContactWithWall) {
             inContactWithWall = false;
             jumpWallDir = Vector2.zero;
         }
     }
 
     private void moveHorizontal() {
-        if(!inContactWithWall) { 
+        if (!inContactWithWall) {
             float xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
         }
@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void jump() {
-        if(Input.GetButtonDown("Jump") && grounded && !inContactWithWall) {
+        if (Input.GetButtonDown("Jump") && grounded && !inContactWithWall) {
             grounded = false;
             xVel = Vector2.up * jumpForce;
             rb.velocity = Vector2.up * jumpForce;
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.CompareTag("Platform") || collision.CompareTag("Border") || collision.CompareTag("TriggerPlatform")) {
+        if (collision.CompareTag("Platform") || collision.CompareTag("Border") || collision.CompareTag("TriggerPlatform")) {
             grounded = true;
         }
     }

@@ -6,10 +6,14 @@ public class JumperMovement : EnemyMovement {
 	public float jumpForce = 5;
 
 	private bool onGround;
+	private AudioSource audioSource;
+	private EnemySounds enemySounds;
 
 	void Start () {
 		base.Initialize ();
 		onGround = true;
+		audioSource = GetComponent<AudioSource> ();
+		enemySounds = GetComponent<EnemySounds> ();
 	}
 	
 	new void Update () {
@@ -21,6 +25,8 @@ public class JumperMovement : EnemyMovement {
 
 			if (onGround) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
+				onGround = false;
+				audioSource.PlayOneShot (enemySounds.GetActionClip ());
 			}
 		}
 	}
@@ -32,14 +38,8 @@ public class JumperMovement : EnemyMovement {
 
 	new private void OnCollisionEnter2D (Collision2D col) {
 		base.OnCollisionEnter2D (col);
-		if (col.gameObject.tag == "Border") {
+		if (col.gameObject.tag == "Border" || col.gameObject.tag == "Platform" || col.gameObject.tag == "TriggerPlatform") {
 			onGround = true;
 		}
-	}
-
-	private void OnCollisionExit2D (Collision2D col) {		
-		if (col.gameObject.tag == "Border") {
-			onGround = false;
-		}	
 	}
 }

@@ -20,4 +20,10 @@ public class SuicideMovement : EnemyMovement {
 		return Mathf.Abs (player.position.x - transform.position.x) < chasingDistance &&
 			Mathf.Abs (player.position.y - transform.position.y) < maxHeightDifference;
 	}
+
+	new protected void OnCollisionEnter2D(Collision2D col){
+		base.OnCollisionEnter2D(col);
+		if (col.gameObject.tag == "Player")
+			GetComponent<SuicideExplode>().Explode();
+	}
 }

@@ -55,6 +55,10 @@ GameObject:
   - component: {fileID: 50805255658723288}
   - component: {fileID: 61875955138618172}
   - component: {fileID: 114859216236229752}
+  - component: {fileID: 114029980955222990}
+  - component: {fileID: 82176078882113988}
+  - component: {fileID: 114059811273710202}
+  - component: {fileID: 114406538502868124}
   m_Layer: 0
   m_Name: Suicide
   m_TagString: Enemy
@@ -69,8 +73,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886888727352232}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0.09, y: 0.99, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 4848699146073616}
   m_RootOrder: 0
@@ -82,8 +86,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676524578441528}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.71, z: -0.1}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0.09, y: 0.99, z: -0.1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 4848699146073616}
   m_RootOrder: 1
@@ -95,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977751864694952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4477386766987640}
@@ -146,8 +150,134 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.25, y: 1}
   m_EdgeRadius: 0
+--- !u!82 &82176078882113988
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977751864694952}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114029980955222990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977751864694952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9ac0de4e5008b48a2b5edccf979ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filling: {fileID: 212636614768031426}
+  border: {fileID: 212578982602637772}
+--- !u!114 &114059811273710202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977751864694952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2be717021076b84daf31f5fc6a84af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionTime: 0.5
+  explosionBorder: {fileID: 21300000, guid: bc26df2b6acf8434fb9160fa6bcc14f6, type: 3}
+  explosionFilling: {fileID: 21300000, guid: 023e0f0a0449949fcb9c191b8462b415, type: 3}
+--- !u!114 &114406538502868124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977751864694952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0050b608295fdab42bc568f65ece6977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathClips:
+  - {fileID: 8300000, guid: 099e0f01342e34b39a6f24b18e045219, type: 3}
+  - {fileID: 8300000, guid: 9091191e1e4bd45a09dfb10ab0af8047, type: 3}
+  - {fileID: 8300000, guid: bec750cc3836243eeb66fe0ad8b1e92f, type: 3}
+  - {fileID: 8300000, guid: ab35cb3626614464bb43391407a087c8, type: 3}
+  - {fileID: 8300000, guid: fcc31d3c9be564258a7a1b8b9af76885, type: 3}
+  actionClips:
+  - {fileID: 8300000, guid: 0b88090bfdbc6498bb5bfd3fbf5779d8, type: 3}
 --- !u!114 &114632107133883170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,7 +292,9 @@ MonoBehaviour:
   color: 1
   maxHealth: 10
   maxTransparency: 0.3
-  filling: {fileID: 212636614768031426}
+  corpseTime: 1
+  deadSpriteFilling: {fileID: 21300000, guid: deaf6571b4f714eeb8837233bbc179fd, type: 3}
+  deadSpriteBorder: {fileID: 21300000, guid: 6ed9e238955a545b4ac38ae08471e9d1, type: 3}
 --- !u!114 &114859216236229752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,7 +344,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fb96765ab9be84e47b7857355a5944a9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6ed9e238955a545b4ac38ae08471e9d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -256,7 +388,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2668ac6d8280e47a2952aef97bcba566, type: 3}
+  m_Sprite: {fileID: 21300000, guid: deaf6571b4f714eeb8837233bbc179fd, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

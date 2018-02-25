@@ -21,10 +21,11 @@ public class PageController : MonoBehaviour {
 		musicController.PlayTheme (strips [currentStrip].GetTheme ());
 	}
 	
-	public void NextStrip(){		
+	public void NextStrip(){
 		currentStrip = Mathf.Min (strips.Length - 1, currentStrip + 1);
 		cameraController.NextStrip (strips[currentStrip]);
-		musicController.PlayTheme (strips [currentStrip].GetTheme ());
+		musicController.Stop ();
+		musicController.PlayChangeStripClip ();
 	}
 
 	// Para pruebas con botones
@@ -34,6 +35,6 @@ public class PageController : MonoBehaviour {
 	}
 
 	public void CameraInPosition(){
-
+		musicController.PlayTheme (strips [currentStrip].GetTheme ());
 	}
 }

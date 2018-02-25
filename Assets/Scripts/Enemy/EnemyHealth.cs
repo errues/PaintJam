@@ -9,18 +9,25 @@ public class EnemyHealth : MonoBehaviour {
 	[Range(0f, 1f)]
 	public float maxTransparency = 0.3f;
 
-	public SpriteRenderer filling;
+	public float corpseTime = 1;
+
+	private SpriteRenderer filling;
+	private SpriteRenderer border;
+
+	public Sprite deadSpriteFilling;
+	public Sprite deadSpriteBorder;
 
 	private int Y, R, B;
 	private float alpha;
 
-	private void Awake(){		
+	private void Start(){		
 		alpha = 1f;
-		SetHealth ();
-	}
 
-	private void OnValidate(){
-		SetInitialColor ();
+		filling = GetComponent<EnemySpriteManager> ().filling;
+		border = GetComponent<EnemySpriteManager> ().border;
+
+		SetHealth ();
+		SetColor ();
 	}
 
 	public void HitAmarillo(){
@@ -117,11 +124,14 @@ public class EnemyHealth : MonoBehaviour {
 
 		if (hit)
 			SetColor ();
-
+		
+		if (Y <= 0 && R <= 0 && B <= 0)
+			Die ();
+		
 		return hit;
 	}
 
-	private void SetColor(){
+	public void SetColor(){
 		Color c = new Color();
 		switch (color){
 		case BasicColors.AMARILLO:
@@ -165,49 +175,6 @@ public class EnemyHealth : MonoBehaviour {
 		filling.color = c;
 	}
 
-	private void SetInitialColor(){		
-		alpha = 1;	
-		Color c = new Color (0, 0, 0, alpha);
-		switch (color){
-		case BasicColors.AMARILLO:
-			c.r = 1f;
-			c.g = 1f;
-			c.b = 0f;
-			break;
-		case BasicColors.ROJO:
-			c.r = 1f;
-			c.g = 0f;
-			c.b = 0f;
-			break;
-		case BasicColors.AZUL:
-			c.r = 0f;
-			c.g = 0f;
-			c.b = 1f;
-			break;
-		case BasicColors.NARANJA:
-			c.r = 1f;
-			c.g = 0.5f;
-			c.b = 0f;
-			break;
-		case BasicColors.MORADO:
-			c.r = 0.5f;
-			c.g = 0f;
-			c.b = 0.5f;
-			break;
-		case BasicColors.VERDE:
-			c.r = 0f;
-			c.g = 1f;
-			c.b = 0f;
-			break;
-		case BasicColors.NEGRO:
-			c.r = 0.1f;
-			c.g = 0.1f;
-			c.b = 0.1f;
-			break;
-		}
-		filling.color = c;
-	}
-
 	private void SetHealth(){
 		Y = R = B = 0;
 		switch (color){
@@ -238,5 +205,11 @@ public class EnemyHealth : MonoBehaviour {
 			B = maxHealth;
 			break;
 		}
+	}
+
+	private void Die(){
+		filling.sprite = deadSpriteFilling;
+		border.sprite = deadSpriteBorder;
+		Object.Destroy (this.gameObject, corpseTime);
 	}
 }

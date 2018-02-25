@@ -35,12 +35,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4117656158709936}
-  - component: {fileID: 114122033345453538}
   - component: {fileID: 61177082241449650}
   - component: {fileID: 50746209836358630}
   - component: {fileID: 61663606829866726}
   - component: {fileID: 61976847695091190}
-  - component: {fileID: 114884011275249676}
+  - component: {fileID: 114107922255759608}
+  - component: {fileID: 114986481372317482}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -170,7 +170,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25}
   m_EdgeRadius: 0
---- !u!114 &114122033345453538
+--- !u!114 &114107922255759608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -178,14 +178,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1229784268069496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7fd6d0b2c0d0314194ba60dc0484541, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cf0271f4717a734fa03e80769eccc30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 7.5
-  fallMultiplier: 3
-  lowJumpMultiplier: 2
---- !u!114 &114884011275249676
+  life: 0
+  cdInvulnerability: 0
+--- !u!114 &114986481372317482
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -193,12 +191,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1229784268069496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7fd6d0b2c0d0314194ba60dc0484541, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b0260de50f466e4cb3edce9ad9e247f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpForce: 7.5
-  fallMultiplier: 3
+  jumpForce: 7
+  fallMultiplier: 2.5
   lowJumpMultiplier: 2
 --- !u!212 &212630371993896912
 SpriteRenderer:

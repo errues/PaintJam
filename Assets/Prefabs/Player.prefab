@@ -35,12 +35,20 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4117656158709936}
+<<<<<<< HEAD
+  - component: {fileID: 114241719657192034}
+  - component: {fileID: 61177082241449650}
+  - component: {fileID: 50746209836358630}
+  - component: {fileID: 61663606829866726}
+  - component: {fileID: 114561504458540540}
+=======
   - component: {fileID: 61177082241449650}
   - component: {fileID: 50746209836358630}
   - component: {fileID: 61663606829866726}
   - component: {fileID: 61976847695091190}
   - component: {fileID: 114107922255759608}
   - component: {fileID: 114986481372317482}
+>>>>>>> 5cc608bf4c2fd82bc6a41f1dd481d3d9d2f22436
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -145,6 +153,9 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.25}
   m_EdgeRadius: 0
+<<<<<<< HEAD
+--- !u!114 &114241719657192034
+=======
 --- !u!61 &61976847695091190
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -171,6 +182,7 @@ BoxCollider2D:
   m_Size: {x: 1, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &114107922255759608
+>>>>>>> 5cc608bf4c2fd82bc6a41f1dd481d3d9d2f22436
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -178,19 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1229784268069496}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cf0271f4717a734fa03e80769eccc30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 0
-  cdInvulnerability: 0
---- !u!114 &114986481372317482
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1229784268069496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 1b0260de50f466e4cb3edce9ad9e247f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -198,6 +198,37 @@ MonoBehaviour:
   jumpForce: 7
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
+--- !u!114 &114561504458540540
+=======
+  m_Script: {fileID: 11500000, guid: 0cf0271f4717a734fa03e80769eccc30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
+  cdInvulnerability: 0
+--- !u!114 &114986481372317482
+>>>>>>> 5cc608bf4c2fd82bc6a41f1dd481d3d9d2f22436
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229784268069496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+<<<<<<< HEAD
+  m_Script: {fileID: 11500000, guid: 0cf0271f4717a734fa03e80769eccc30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
+  cdInvulnerability: 0
+=======
+  m_Script: {fileID: 11500000, guid: 1b0260de50f466e4cb3edce9ad9e247f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpForce: 7
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+>>>>>>> 5cc608bf4c2fd82bc6a41f1dd481d3d9d2f22436
 --- !u!212 &212630371993896912
 SpriteRenderer:
   m_ObjectHideFlags: 1

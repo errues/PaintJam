@@ -250,9 +250,7 @@ MonoBehaviour:
   gunHeight: 1.5
   enemyBullet: {fileID: 1963214432882514, guid: 8b7e0321d1e7c0547a2d9bbc9ccbda32,
     type: 2}
-  shotClips:
-  - {fileID: 8300000, guid: dc4478ec1413446748b19ff4bd59a4c7, type: 3}
-  - {fileID: 8300000, guid: 0a6d13ac59fa4489382e7e110280875c, type: 3}
+  shotClips: []
 --- !u!114 &114784966659399218
 MonoBehaviour:
   m_ObjectHideFlags: 1

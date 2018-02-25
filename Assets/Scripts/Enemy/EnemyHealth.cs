@@ -20,12 +20,39 @@ public class EnemyHealth : MonoBehaviour {
 	private int Y, R, B;
 	private float alpha;
 
-	private void Start(){		
+	private void Start(){
 		alpha = 1f;
 
 		filling = GetComponent<EnemySpriteManager> ().filling;
 		border = GetComponent<EnemySpriteManager> ().border;
+		SetHealth ();
+		SetColor ();
+	}
 
+	public void Initialize(int lifePoints, bool combined){
+		filling = GetComponent<EnemySpriteManager> ().filling;
+		border = GetComponent<EnemySpriteManager> ().border;
+		maxHealth = lifePoints;
+		switch (Random.Range (0, 3)) {
+		case 0:
+			if (!combined)
+				color = BasicColors.AMARILLO;
+			else
+				color = BasicColors.NARANJA;
+			break;
+		case 1:
+			if (!combined)
+				color = BasicColors.ROJO;
+			else
+				color = BasicColors.VERDE;
+			break;
+		case 2:
+			if (!combined)
+				color = BasicColors.AZUL;
+			else
+				color = BasicColors.MORADO;
+			break;
+		}
 		SetHealth ();
 		SetColor ();
 	}
@@ -210,6 +237,7 @@ public class EnemyHealth : MonoBehaviour {
 	private void Die(){
 		filling.sprite = deadSpriteFilling;
 		border.sprite = deadSpriteBorder;
+		transform.parent.GetComponent<EnemyController> ().EnemyDied ();
 		Object.Destroy (this.gameObject, corpseTime);
 	}
 }

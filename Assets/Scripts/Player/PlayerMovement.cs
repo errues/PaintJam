@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour {
             inContactWithWall = false;
             jumpWallDir = Vector2.zero;
         }
-        print(inContactWithWall);
     }
 
     private void moveHorizontal() {

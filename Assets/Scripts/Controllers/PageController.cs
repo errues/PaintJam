@@ -9,8 +9,11 @@ public class PageController : MonoBehaviour {
 	private CameraController cameraController;
 	private MusicController musicController;
 
+	private bool firstFrame;
+
 	private void Awake(){
 		currentStrip = 0;
+		firstFrame = true;
 	}
 
 	void Start () {
@@ -20,8 +23,16 @@ public class PageController : MonoBehaviour {
 		cameraController.FirstStrip (strips[currentStrip]);
 		musicController.PlayTheme (strips [currentStrip].GetTheme ());
 	}
+
+	private void Update(){
+		if (firstFrame) {
+			strips [currentStrip].NextWave ();
+			firstFrame = false;
+		}
+	}			
 	
 	public void NextStrip(){
+		print ("epa");
 		currentStrip = Mathf.Min (strips.Length - 1, currentStrip + 1);
 		cameraController.NextStrip (strips[currentStrip]);
 		musicController.Stop ();
@@ -36,5 +47,11 @@ public class PageController : MonoBehaviour {
 
 	public void CameraInPosition(){
 		musicController.PlayTheme (strips [currentStrip].GetTheme ());
+	}
+
+	public void NoEnemiesRemaining(){
+		if (!strips [currentStrip].StillSpawning ()) {
+			strips [currentStrip].NextWave ();
+		}
 	}
 }

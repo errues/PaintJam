@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool jumpWall;
     private bool facingRight;
     private Animator anim;
-    private PlayerSounds audioManager;
+    private PlayerSounds sounds;
 
     // Use this for initialization
     void Start() {
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour {
         inContactWithWall = false;
         facingRight = true;
         anim = GetComponent<Animator>();
-        audioManager = GetComponent<PlayerSounds>();
+        sounds = GetComponent<PlayerSounds>();
     }
 
     // Update is called once per frame
@@ -90,6 +90,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void jump() {
         if (Input.GetButtonDown("Jump") && grounded && !inContactWithWall) {
+            anim.SetTrigger("Jump");
+            sounds.playJump();
             grounded = false;
             xVel = Vector2.up * jumpForce;
             rb.velocity = Vector2.up * jumpForce;
@@ -98,6 +100,8 @@ public class PlayerMovement : MonoBehaviour {
 
     private void wallJump() {
         if (Input.GetButtonDown("Jump") && !grounded && inContactWithWall) {
+            anim.SetTrigger("Jump");
+            sounds.playJump();
             xVel = (Vector2.up + jumpWallDir) * jumpForce;
             rb.velocity += xVel;
             jumpWallDir = Vector2.zero;

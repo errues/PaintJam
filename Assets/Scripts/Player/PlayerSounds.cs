@@ -16,15 +16,15 @@ public class PlayerSounds : MonoBehaviour {
     }
 
     public void playSteps() {
-        InvokeRepeating("playSingleStep", 0.2f, 1f);
-    }
-
-    public void stopPlay() {
-        CancelInvoke();
-    }
-
-    private void playSingleStep() {
         player.PlayOneShot(stepSound);
+    }
+
+    public void playJump() {
+        player.PlayOneShot(jumpSound);
+    }
+
+    public void playShoot() {
+        player.PlayOneShot(shootSound);
     }
 
 }

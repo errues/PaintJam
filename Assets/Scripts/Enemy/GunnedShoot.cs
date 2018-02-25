@@ -24,6 +24,7 @@ public class GunnedShoot : MonoBehaviour {
 
 	private AudioSource audioSource;
 	private EnemySounds enemySounds;
+	private EnemyHealth enemyHealth;
 
 	void Start () {
 		lastShotTime = Time.time;
@@ -32,6 +33,7 @@ public class GunnedShoot : MonoBehaviour {
 
 		audioSource = GetComponent<AudioSource> ();
 		enemySounds = GetComponent<EnemySounds> ();
+		enemyHealth = GetComponent<EnemyHealth> ();
 
 		filling = GetComponent<EnemySpriteManager> ().filling;
 		border = GetComponent<EnemySpriteManager> ().border;
@@ -40,7 +42,7 @@ public class GunnedShoot : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (CanShoot ()) {
+		if (CanShoot () && !enemyHealth.IsDead ()) {
 			// No muy eficiente, revisar
 			filling.sprite = shootSpriteFill;
 			border.sprite = shootSpriteBorder;

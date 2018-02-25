@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   strips: []
-  firstClip: {fileID: 8300000, guid: 4a989f3902b9042b3bd41d17c1d1333f, type: 3}
+  firstClip: {fileID: 8300000, guid: 7dbf03402abea465a9407e7eb9c69aab, type: 3}
 --- !u!114 &114522164322802334
 MonoBehaviour:
   m_ObjectHideFlags: 1

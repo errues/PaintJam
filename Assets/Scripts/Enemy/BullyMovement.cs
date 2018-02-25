@@ -10,7 +10,7 @@ public class BullyMovement : EnemyMovement {
 	new void Update () {		
 		base.Update ();
 
-		if (ShouldChase ()) {
+		if (ShouldChase () && !enemyHealth.IsDead ()) {
 			float xVelocity = Mathf.Clamp(speed * (player.position.x - transform.position.x), -speed, speed);
 			rb.velocity = new Vector2 (xVelocity, rb.velocity.y);
 		}

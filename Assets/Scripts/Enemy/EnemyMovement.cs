@@ -22,6 +22,8 @@ public abstract class EnemyMovement : MonoBehaviour {
 	private bool headingLeft;
 	private bool headingChanged;
 
+	protected EnemyHealth enemyHealth;
+
 	protected void Initialize(){
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		rb = GetComponent<Rigidbody2D> ();
@@ -34,23 +36,27 @@ public abstract class EnemyMovement : MonoBehaviour {
 
 		headingChanged = false;
 		headingLeft = true;
+
+		enemyHealth = GetComponent<EnemyHealth> ();
 	}
 
 	protected void Update(){
-		transform.position = new Vector3 (transform.position.x, transform.position.y, GetZValue ());
-		if (rb.velocity.y < 0) {
-			rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-		}
-		if (rb.velocity.x > 0 && headingLeft == true) {
-			headingLeft = false;
-			headingChanged = true;
-		} else if (rb.velocity.x < 0 && headingLeft == false) {
-			headingLeft = true;
-			headingChanged = true;
-		}
-		if (headingChanged) {
-			headingChanged = false;
-			SetSpriteOrientation (headingLeft);
+		if (!enemyHealth.IsDead ()) {
+			transform.position = new Vector3 (transform.position.x, transform.position.y, GetZValue ());
+			if (rb.velocity.y < 0) {
+				rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+			}
+			if (rb.velocity.x > 0 && headingLeft == true) {
+				headingLeft = false;
+				headingChanged = true;
+			} else if (rb.velocity.x < 0 && headingLeft == false) {
+				headingLeft = true;
+				headingChanged = true;
+			}
+			if (headingChanged) {
+				headingChanged = false;
+				SetSpriteOrientation (headingLeft);
+			}
 		}
 	}
 
@@ -78,7 +84,7 @@ public abstract class EnemyMovement : MonoBehaviour {
 		if (col.gameObject.tag == "Enemy") {
 			Physics2D.IgnoreCollision (col.collider, myCollider);
 		} else if (col.gameObject.tag == "Player") {
-			// Aquí llamaremos a playerHealth
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth> ().takeDamage ();
 			Physics2D.IgnoreCollision (col.collider, myCollider);
 		}
 	}

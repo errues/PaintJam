@@ -24,7 +24,7 @@ public class EnemyBullet : MonoBehaviour {
 		if (col.gameObject.tag == "Enemy") {
 			Physics2D.IgnoreCollision (col.collider, myCollider);
 		} else if (col.gameObject.tag == "Player") {
-			// Aquí llamaremos a playerHealth
+			GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth> ().takeDamage ();
 			Object.Destroy (this.gameObject);
 		} else if (col.gameObject.tag == "Border") {
 			Object.Destroy (this.gameObject);

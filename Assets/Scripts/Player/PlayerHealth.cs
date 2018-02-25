@@ -73,8 +73,12 @@ public class PlayerHealth : MonoBehaviour {
 	}
 
 	public void Reborn(){
-		life = maxLife;
 		dead = false;
         anim.SetTrigger("Reborn");
+		Heal ();
+	}
+
+	public void Heal(){
+		life = maxLife;
 	}
 }

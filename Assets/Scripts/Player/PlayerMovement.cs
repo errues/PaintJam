@@ -78,7 +78,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void crouch() {
-        if (Input.GetAxis("Crouch") < 0) {
+        if (Input.GetAxis("Crouch") < 0 || Input.GetButton("Crouch")) {
             isCrouch = true;
         } else {
             isCrouch = false;

@@ -138,4 +138,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
+	public bool GetFacing(){
+		return facingRight;
+	}
 }

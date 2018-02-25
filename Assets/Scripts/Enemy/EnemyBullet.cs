@@ -30,8 +30,4 @@ public class EnemyBullet : MonoBehaviour {
 			Object.Destroy (this.gameObject);
 		}
 	}
-
-	private void OnCollisionStay2D(Collision2D col){
-		print (col.gameObject.tag);
-	}
 }

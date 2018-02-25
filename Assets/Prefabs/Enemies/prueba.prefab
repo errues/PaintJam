@@ -152,7 +152,9 @@ MonoBehaviour:
   color: 5
   maxHealth: 10
   maxTransparency: 0.3
-  filling: {fileID: 212793851441708588}
+  corpseTime: 1
+  deadSpriteFilling: {fileID: 0}
+  deadSpriteBorder: {fileID: 0}
 --- !u!114 &114152649686318630
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour {
     private Vector2 jumpWallDir;
     private bool grounded;
     private bool jumpWall;
+    private bool facingRight;
+    private Animator anim;
 
     // Use this for initialization
     void Start() {
@@ -26,11 +28,15 @@ public class PlayerMovement : MonoBehaviour {
         xVel = Vector2.zero;
         grounded = false;
         inContactWithWall = false;
+        facingRight = true;
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
         moveHorizontal();
+        selectFacing();
+        setAnimation();
         fall();
         jump();
         wallJump();
@@ -41,6 +47,7 @@ public class PlayerMovement : MonoBehaviour {
         if (grounded && jumpWall) {
             jumpWall = false;
         }
+        
     }
 
     private void moveHorizontal() {
@@ -51,6 +58,24 @@ public class PlayerMovement : MonoBehaviour {
         // TODO POSSIBLE add jump control with horizontal movement
         xVel.y = rb.velocity.y;
         rb.velocity = xVel;
+    }
+
+    private void setAnimation() {
+        anim.SetBool("grounded", grounded);
+        anim.SetBool("Moving", rb.velocity.x != 0);
+    }
+
+    private void selectFacing() {
+        if(facingRight && rb.velocity.x < 0) {
+            flip();
+        }else if(!facingRight && rb.velocity.x > 0) {
+            flip();
+        }
+    }
+
+    private void flip() {
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1, 1, 1));
+        facingRight = !facingRight;
     }
 
     private void fall() {

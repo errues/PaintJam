@@ -17,26 +17,28 @@ public class MainPlayer : MonoBehaviour {
     private Vector2 xVel;
     private bool inContactWithWall;
     private Vector2 jumpWallDir;
+    private bool grounded;
 
     // Use this for initialization
     void Start () {
+        grounded = false;
         isJumping = false;
         rb = GetComponent<Rigidbody2D>();
         xVel = Vector2.zero;
         inContactWithWall = false;
         jumpWallDir = Vector2.zero;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
         move();
         jump();
         wallJump();
-        print(inContactWithWall + ", " + jumpWallDir);
-	}
+        print("groundeD: " + grounded);
+    }
 
     private void move() {
-        if (!isJumping) { //Only add the horizontal speed if the player is on the ground
+        if (!isJumping && !inContactWithWall && grounded) { //Only add the horizontal speed if the player is on the ground
             float xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
         }
@@ -57,10 +59,10 @@ public class MainPlayer : MonoBehaviour {
         }
     }
     private void wallJump() {
-        if (inContactWithWall) {
+        if (Input.GetButtonDown("Jump") && !isJumping && inContactWithWall) {
             isJumping = true;
-            //rb.velocity = (Vector2.up + jumpWallDir) * jumpForce;
-            rb.AddForce((Vector2.up + jumpWallDir) * jumpForce);
+            xVel = (Vector2.up + jumpWallDir) * jumpForce;
+            rb.velocity += xVel;
         }
     }
 
@@ -70,14 +72,32 @@ public class MainPlayer : MonoBehaviour {
             isJumping = false;
         }
         if (plat = col.gameObject.GetComponent<Platform>()) {
-            foreach(ContactPoint2D contact in col.contacts) {
+            grounded = setGrounded(col.contacts);
+            foreach (ContactPoint2D contact in col.contacts) {
                 if (contact.normal.x == 1 || contact.normal.x == -1) {
                     inContactWithWall = true;
                     jumpWallDir.x = contact.normal.x;
                 }
             }
+            
+            if (grounded) {
+                inContactWithWall = false;
+                jumpWallDir = Vector2.zero;
+            }
         }
+        
     }
+
+    private bool setGrounded(ContactPoint2D[] contacts) {
+        bool grounded = false;
+        int i = 0;
+        while(!grounded && i < contacts.Length) {
+            grounded = contacts[i].normal.y == 1;
+            i++;
+        }
+        return grounded;
+    }
+
     private void OnCollisionExit2D(Collision2D collision) {
         if (inContactWithWall) {
             inContactWithWall = false;

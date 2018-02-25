@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BullyMovement : EnemyMovement {
+public class SuicideMovement : EnemyMovement {
 	void Start () {
 		base.Initialize ();	
 	}
@@ -18,6 +18,6 @@ public class BullyMovement : EnemyMovement {
 
 	protected override bool ShouldChase(){
 		return Mathf.Abs (player.position.x - transform.position.x) < chasingDistance &&
-		Mathf.Abs (player.position.y - transform.position.y) < maxHeightDifference;
+			Mathf.Abs (player.position.y - transform.position.y) < maxHeightDifference;
 	}
 }

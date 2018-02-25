@@ -7,6 +7,7 @@ TagManager:
   - TriggerPlatform
   - Enemy
   - Border
+  - Platform
   layers:
   - Default
   - TransparentFX

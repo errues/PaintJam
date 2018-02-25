@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerSounds : MonoBehaviour {
 
-    public AudioClip jumpSound;
-    public AudioClip stepSound;
-    public AudioClip shootSound;
+    public AudioClip[] jumpSound;
+    public AudioClip[] stepSound;
+    public AudioClip[] shootSound;
 
     private AudioSource player;
 
@@ -16,15 +16,15 @@ public class PlayerSounds : MonoBehaviour {
     }
 
     public void playSteps() {
-        player.PlayOneShot(stepSound);
+        player.PlayOneShot(stepSound[Random.Range(0,stepSound.Length)]);
     }
 
     public void playJump() {
-        player.PlayOneShot(jumpSound);
+        player.PlayOneShot(jumpSound[Random.Range(0, stepSound.Length)]);
     }
 
     public void playShoot() {
-        player.PlayOneShot(shootSound);
+        player.PlayOneShot(shootSound[Random.Range(0, stepSound.Length)]);
     }
 
 }

@@ -12,31 +12,37 @@ public class PlayerMovement : MonoBehaviour {
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
-    private Rigidbody2D rb;
     private Vector2 xVel;
-    private bool inContactWithWall;
     private Vector2 jumpWallDir;
+    private bool inContactWithWall;
     private bool grounded;
     private bool jumpWall;
     private bool facingRight;
+    private bool isCrouch;
+    private float crouchSpeed;
+
+    private Rigidbody2D rb;
     private Animator anim;
     private PlayerSounds sounds;
 
     // Use this for initialization
     void Start() {
-        jumpWall = false;
-        rb = GetComponent<Rigidbody2D>();
         xVel = Vector2.zero;
+        isCrouch = false;
+        jumpWall = false;
         grounded = false;
         inContactWithWall = false;
         facingRight = true;
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sounds = GetComponent<PlayerSounds>();
+        crouchSpeed = speed * 0.5f;
     }
 
     // Update is called once per frame
     void Update() {
         moveHorizontal();
+        crouch();
         selectFacing();
         setAnimation();
         fall();
@@ -49,12 +55,17 @@ public class PlayerMovement : MonoBehaviour {
         if (grounded && jumpWall) {
             jumpWall = false;
         }
-        
     }
 
     private void moveHorizontal() {
         if (!inContactWithWall && !jumpWall) {
-            float xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
+            float xVelocity;
+            if (isCrouch) {
+                xVelocity = Mathf.Clamp(crouchSpeed * Input.GetAxis("Horizontal"), -crouchSpeed, crouchSpeed);
+
+            } else {
+               xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
+            }
             xVel.x = xVelocity;
         }
         // TODO POSSIBLE add jump control with horizontal movement
@@ -62,8 +73,17 @@ public class PlayerMovement : MonoBehaviour {
         rb.velocity = xVel;
     }
 
+    private void crouch() {
+        if (Input.GetButton("Crouch")) {
+            isCrouch = true;
+        } else {
+            isCrouch = false;
+        }
+    }
+
     private void setAnimation() {
-        anim.SetBool("grounded", grounded);
+        anim.SetBool("Grounded", grounded);
+        anim.SetBool("Crouch", isCrouch);
         anim.SetBool("Moving", rb.velocity.x != 0);
     }
 
@@ -89,7 +109,7 @@ public class PlayerMovement : MonoBehaviour {
     }
 
     private void jump() {
-        if (Input.GetButtonDown("Jump") && grounded && !inContactWithWall) {
+        if (Input.GetButtonDown("Jump") && grounded && !inContactWithWall  && !isCrouch) {
             anim.SetTrigger("Jump");
             sounds.playJump();
             grounded = false;
@@ -136,6 +156,10 @@ public class PlayerMovement : MonoBehaviour {
         if (this.transform.parent) {
             this.transform.SetParent(null);
         }
+    }
+
+    public bool getFacing() {
+        return facingRight;
     }
 
 }

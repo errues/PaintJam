@@ -32,9 +32,11 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     private void getDamage(int dmg) {
-        life -= dmg;
-        isInvulnerable = true;
-        Invoke("resetInvulnerability", cdInvulnerability);
+        if (!isInvulnerable) {
+            life -= dmg;
+            isInvulnerable = true;
+            Invoke("resetInvulnerability", cdInvulnerability);
+        }
     }
 
     private void resetInvulnerability() {

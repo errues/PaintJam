@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionStay2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Border") || collision.gameObject.CompareTag("TriggerPlatform")) {
             foreach (ContactPoint2D contact in collision.contacts) {
                 if (contact.normal.x == 1 || contact.normal.x == -1) {

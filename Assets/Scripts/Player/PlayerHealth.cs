@@ -21,7 +21,6 @@ public class PlayerHealth : MonoBehaviour {
 
     private void checkDeath() {
         if(life <= 0) {
-            print("ESTAS MUERTO");
         }
     }
 

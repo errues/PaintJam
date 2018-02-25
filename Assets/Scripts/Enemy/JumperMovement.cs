@@ -21,6 +21,7 @@ public class JumperMovement : EnemyMovement {
 
 			if (onGround) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
+				onGround = false;
 			}
 		}
 	}
@@ -32,14 +33,8 @@ public class JumperMovement : EnemyMovement {
 
 	new private void OnCollisionEnter2D (Collision2D col) {
 		base.OnCollisionEnter2D (col);
-		if (col.gameObject.tag == "Border") {
+		if (col.gameObject.tag == "Border" || col.gameObject.tag == "Platform" || col.gameObject.tag == "TriggerPlatform") {
 			onGround = true;
 		}
-	}
-
-	private void OnCollisionExit2D (Collision2D col) {		
-		if (col.gameObject.tag == "Border") {
-			onGround = false;
-		}	
 	}
 }

@@ -21,7 +21,6 @@ public class PlayerHealth : MonoBehaviour {
 
     private void Update() {
         checkDeath();
-        print(life);
     }
 
     private void checkDeath() {
@@ -32,9 +31,5 @@ public class PlayerHealth : MonoBehaviour {
 
     private void getDamage(int dmg) {
         life -= dmg;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        
     }
 }

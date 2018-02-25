@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0260de50f466e4cb3edce9ad9e247f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8.12
+  speed: 8.36
   jumpForce: 7
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
@@ -271,9 +271,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39c2a5c56544255449bb236406632b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSound: {fileID: 8300000, guid: ff8fc58d4877042e6a4fa4c81bb9e25c, type: 3}
-  stepSound: {fileID: 8300000, guid: 3f03c7e3f60454da5b927d9f9e586631, type: 3}
-  shootSound: {fileID: 8300000, guid: ad2f97ba9156549f38e7d536cb00ba68, type: 3}
+  jumpSound:
+  - {fileID: 8300000, guid: 69bb4628f5f374ae296ce460218fe723, type: 3}
+  - {fileID: 8300000, guid: ff8fc58d4877042e6a4fa4c81bb9e25c, type: 3}
+  - {fileID: 8300000, guid: 00fe84c9d4a4049fb82564b6b7872f12, type: 3}
+  - {fileID: 8300000, guid: fe4ef3eef5c224987b6ff50d0cc53837, type: 3}
+  stepSound:
+  - {fileID: 8300000, guid: 3f03c7e3f60454da5b927d9f9e586631, type: 3}
+  shootSound:
+  - {fileID: 8300000, guid: 78a37558d35b54d3084fa9dab2132dbe, type: 3}
+  - {fileID: 8300000, guid: 32fd8e1a71fae4cabac39c5eeaa89e8c, type: 3}
+  - {fileID: 8300000, guid: ad2f97ba9156549f38e7d536cb00ba68, type: 3}
+  - {fileID: 8300000, guid: 08d0b069a01ca4c02acabcceae459df3, type: 3}
 --- !u!114 &114610275887191104
 MonoBehaviour:
   m_ObjectHideFlags: 1

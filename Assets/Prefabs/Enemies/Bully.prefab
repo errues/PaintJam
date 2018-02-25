@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 114264115157277764}
   - component: {fileID: 61371430801239398}
   - component: {fileID: 114980058516660608}
+  - component: {fileID: 114680896639643746}
+  - component: {fileID: 82388828242897650}
   m_Layer: 0
   m_Name: Bully
   m_TagString: Enemy
@@ -149,6 +151,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.5}
   m_EdgeRadius: 0
+--- !u!82 &82388828242897650
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906092934880432}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114264115157277764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -181,6 +263,24 @@ MonoBehaviour:
   corpseTime: 1
   deadSpriteFilling: {fileID: 21300000, guid: 0f7b47039ac8c48b2a97327b2a143c22, type: 3}
   deadSpriteBorder: {fileID: 21300000, guid: 28bfcd217460249059ada0cc4912e035, type: 3}
+--- !u!114 &114680896639643746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1906092934880432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0050b608295fdab42bc568f65ece6977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathClips:
+  - {fileID: 8300000, guid: 099e0f01342e34b39a6f24b18e045219, type: 3}
+  - {fileID: 8300000, guid: 9091191e1e4bd45a09dfb10ab0af8047, type: 3}
+  - {fileID: 8300000, guid: bec750cc3836243eeb66fe0ad8b1e92f, type: 3}
+  - {fileID: 8300000, guid: ab35cb3626614464bb43391407a087c8, type: 3}
+  - {fileID: 8300000, guid: fcc31d3c9be564258a7a1b8b9af76885, type: 3}
+  actionClips: []
 --- !u!114 &114980058516660608
 MonoBehaviour:
   m_ObjectHideFlags: 1

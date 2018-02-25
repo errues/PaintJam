@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 61780407069462552}
   - component: {fileID: 114151069790370140}
   - component: {fileID: 114568627928162844}
+  - component: {fileID: 114865129535332418}
+  - component: {fileID: 82355940417565596}
   m_Layer: 0
   m_Name: Jumper
   m_TagString: Enemy
@@ -149,6 +151,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.5}
   m_EdgeRadius: 0
+--- !u!82 &82355940417565596
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514595161857288}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114151069790370140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +277,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   filling: {fileID: 212371247938718434}
   border: {fileID: 212220785203631594}
+--- !u!114 &114865129535332418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1514595161857288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0050b608295fdab42bc568f65ece6977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathClips:
+  - {fileID: 8300000, guid: 099e0f01342e34b39a6f24b18e045219, type: 3}
+  - {fileID: 8300000, guid: 9091191e1e4bd45a09dfb10ab0af8047, type: 3}
+  - {fileID: 8300000, guid: bec750cc3836243eeb66fe0ad8b1e92f, type: 3}
+  - {fileID: 8300000, guid: ab35cb3626614464bb43391407a087c8, type: 3}
+  - {fileID: 8300000, guid: fcc31d3c9be564258a7a1b8b9af76885, type: 3}
+  actionClips:
+  - {fileID: 8300000, guid: 69bb4628f5f374ae296ce460218fe723, type: 3}
+  - {fileID: 8300000, guid: ff8fc58d4877042e6a4fa4c81bb9e25c, type: 3}
+  - {fileID: 8300000, guid: 00fe84c9d4a4049fb82564b6b7872f12, type: 3}
+  - {fileID: 8300000, guid: fe4ef3eef5c224987b6ff50d0cc53837, type: 3}
+  - {fileID: 8300000, guid: 36a218af3cab74b61a74eec61ad7be82, type: 3}
+  - {fileID: 8300000, guid: 9838ba25450014dccb7b12bf971f77b6, type: 3}
 --- !u!212 &212220785203631594
 SpriteRenderer:
   m_ObjectHideFlags: 1

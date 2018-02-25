@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 82892142069580912}
   - component: {fileID: 114406012510744802}
   - component: {fileID: 114557211838212440}
+  - component: {fileID: 114373207037272774}
   m_Layer: 0
   m_Name: Gunned
   m_TagString: Enemy
@@ -247,6 +248,26 @@ MonoBehaviour:
   maxHeightDifference: 0.5
   fallMultiplier: 2.5
   stopChasingDistance: 15
+--- !u!114 &114373207037272774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405257641111648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0050b608295fdab42bc568f65ece6977, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathClips:
+  - {fileID: 8300000, guid: 099e0f01342e34b39a6f24b18e045219, type: 3}
+  - {fileID: 8300000, guid: 9091191e1e4bd45a09dfb10ab0af8047, type: 3}
+  - {fileID: 8300000, guid: bec750cc3836243eeb66fe0ad8b1e92f, type: 3}
+  - {fileID: 8300000, guid: ab35cb3626614464bb43391407a087c8, type: 3}
+  - {fileID: 8300000, guid: fcc31d3c9be564258a7a1b8b9af76885, type: 3}
+  actionClips:
+  - {fileID: 8300000, guid: dc4478ec1413446748b19ff4bd59a4c7, type: 3}
+  - {fileID: 8300000, guid: 0a6d13ac59fa4489382e7e110280875c, type: 3}
 --- !u!114 &114406012510744802
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,11 +280,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunHeight: 1.5
+  gunX: 1.5
   timeBetweenShots: 1
   maxShootDistance: 20
-  shotClips:
-  - {fileID: 8300000, guid: dc4478ec1413446748b19ff4bd59a4c7, type: 3}
-  - {fileID: 8300000, guid: 0a6d13ac59fa4489382e7e110280875c, type: 3}
   enemyBullet: {fileID: 1963214432882514, guid: 8b7e0321d1e7c0547a2d9bbc9ccbda32,
     type: 2}
   shootSpriteBorder: {fileID: 21300000, guid: 7d61f313bbcc741858f834f7aa900479, type: 3}

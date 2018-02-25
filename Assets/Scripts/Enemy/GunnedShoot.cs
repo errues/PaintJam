@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GunnedShoot : MonoBehaviour {
 	public float gunHeight = 1.5f;
+	public float gunX = 1.5f;
 	public float timeBetweenShots = 5;
 	public float maxShootDistance = 20;
 	
-	public AudioClip[] shotClips;
 	public GameObject enemyBullet;
 
 	public Sprite shootSpriteBorder;
@@ -19,15 +19,19 @@ public class GunnedShoot : MonoBehaviour {
 	private SpriteRenderer border;
 
 	private float lastShotTime;
-	private AudioSource audioSource;
 	private Rigidbody2D rb;
 	private Transform player;
 
+	private AudioSource audioSource;
+	private EnemySounds enemySounds;
+
 	void Start () {
 		lastShotTime = Time.time;
-		audioSource = GetComponent<AudioSource> ();
 		rb = GetComponent<Rigidbody2D> ();
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
+
+		audioSource = GetComponent<AudioSource> ();
+		enemySounds = GetComponent<EnemySounds> ();
 
 		filling = GetComponent<EnemySpriteManager> ().filling;
 		border = GetComponent<EnemySpriteManager> ().border;
@@ -69,13 +73,12 @@ public class GunnedShoot : MonoBehaviour {
 	private void Shoot(){
 		lastShotTime = Time.time;
 		bool left = player.transform.position.x < transform.position.x;
-		float x = 1f;
+		float x = gunX;
 		if (left)
-			x = -1f;
+			x = -gunX;
 		Transform bullet = Object.Instantiate (enemyBullet, new Vector3(transform.position.x + x, transform.position.y + gunHeight, -1), new Quaternion()).transform;
 		bullet.GetComponent<EnemyBullet>().Initialize(left);
 
-		int r = Random.Range (0, shotClips.Length);
-		audioSource.PlayOneShot (shotClips [r]);
+		audioSource.PlayOneShot (enemySounds.GetActionClip());
 	}
 }

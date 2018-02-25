@@ -6,10 +6,14 @@ public class JumperMovement : EnemyMovement {
 	public float jumpForce = 5;
 
 	private bool onGround;
+	private AudioSource audioSource;
+	private EnemySounds enemySounds;
 
 	void Start () {
 		base.Initialize ();
 		onGround = true;
+		audioSource = GetComponent<AudioSource> ();
+		enemySounds = GetComponent<EnemySounds> ();
 	}
 	
 	new void Update () {
@@ -22,6 +26,7 @@ public class JumperMovement : EnemyMovement {
 			if (onGround) {
 				rb.velocity = new Vector2 (rb.velocity.x, jumpForce);
 				onGround = false;
+				audioSource.PlayOneShot (enemySounds.GetActionClip ());
 			}
 		}
 	}

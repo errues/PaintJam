@@ -11,6 +11,10 @@ public class PlayerHealth : MonoBehaviour {
 
     private bool isInvulnerable;
 
+    public void takeDamage(int dmg = 1) {
+        getDamage(dmg);
+    }
+
     private void Start() {
         isInvulnerable = false;
     }
@@ -24,12 +28,7 @@ public class PlayerHealth : MonoBehaviour {
         }
     }
 
-
     private void getDamage(int dmg) {
         life -= dmg;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        
     }
 }

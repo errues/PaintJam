@@ -40,7 +40,7 @@ public class Platform : MonoBehaviour {
     private void setColliders(BoxCollider2D[] cols) {
         foreach (BoxCollider2D col in cols) {
             if (col.isTrigger) {
-                Vector2 triggerSize = new Vector2(platformSize.x * 0.9f, platformSize.y * 0.05f);
+                Vector2 triggerSize = new Vector2(platformSize.x * 0.8f, platformSize.y * 0.05f);
                 Vector2 triggerPos = new Vector2(0, platformSize.y * 0.5f);
                 col.size = triggerSize;
                 col.offset = triggerPos;

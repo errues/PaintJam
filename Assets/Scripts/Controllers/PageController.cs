@@ -32,17 +32,25 @@ public class PageController : MonoBehaviour {
 	}			
 	
 	public void NextStrip(){
-		print ("epa");
-		currentStrip = Mathf.Min (strips.Length - 1, currentStrip + 1);
-		cameraController.NextStrip (strips[currentStrip]);
-		musicController.Stop ();
-		musicController.PlayChangeStripClip ();
+		currentStrip++;
+		if (currentStrip >= strips.Length) {
+			//finish
+		} else {
+			cameraController.NextStrip (strips[currentStrip]);
+			musicController.Stop ();
+			musicController.PlayChangeStripClip ();
+			strips [currentStrip].NextWave ();
+		}
 	}
 
 	// Para pruebas con botones
 	public void PreviousStrip(){
 		currentStrip = Mathf.Max (0, currentStrip - 1);
 		cameraController.NextStrip (strips[currentStrip]);
+	}
+
+	public void PlayerDissapeared(){
+
 	}
 
 	public void CameraInPosition(){

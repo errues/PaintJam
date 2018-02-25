@@ -241,6 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   filling: {fileID: 212596514185864392}
+  border: {fileID: 212527372538048752}
+  timeUntilDestroy: 1
   hitClip:
   - {fileID: 8300000, guid: 78a37558d35b54d3084fa9dab2132dbe, type: 3}
   - {fileID: 8300000, guid: 32fd8e1a71fae4cabac39c5eeaa89e8c, type: 3}

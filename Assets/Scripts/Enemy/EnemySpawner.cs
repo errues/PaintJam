@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour {
 	public GameObject suicide;
 	public GameObject gunned;
 
-	public AudioClip enemySpawnClip;
+	public AudioClip[] enemySpawnClips;
 
 	private int spawnIndex;
 	private int waveIndex;
@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour {
 
 			switch (waves [waveIndex].spawnMode) {
 			case SpawnMode.SIMULTANEOUS:
-				audioSource.PlayOneShot (enemySpawnClip);
+				audioSource.PlayOneShot (enemySpawnClips [Random.Range (0, enemySpawnClips.Length)]);
 				foreach (EnemyType et in waves[waveIndex].enemies) {
 					CreateEnemy (et, life, comb);
 				}
@@ -119,13 +119,12 @@ public class EnemySpawner : MonoBehaviour {
 
 		enemiesToSpawn = new EnemyType[indexes.Length];
 		for (int i = 0; i < indexes.Length; ++i) {
-			print (indexes[i]);
 			enemiesToSpawn [i] = waves [waveIndex].enemies [indexes [i]];
 		}
 	}
 
 	IEnumerator DelayedSpawning(float t){
-		audioSource.PlayOneShot (enemySpawnClip);
+		audioSource.PlayOneShot (enemySpawnClips [Random.Range (0, enemySpawnClips.Length)]);
 		CreateEnemy (enemiesToSpawn [spawnIndex], life, comb);
 		spawnIndex++;
 		if (spawnIndex >= enemiesToSpawn.Length) {

@@ -240,7 +240,9 @@ public class EnemyHealth : MonoBehaviour {
 	private void Die(){
 		filling.sprite = deadSpriteFilling;
 		border.sprite = deadSpriteBorder;
-		transform.parent.GetComponent<EnemyController> ().EnemyDied ();
+		EnemyController ec = transform.parent.GetComponent<EnemyController> ();
+		transform.SetParent (null);
+		ec.EnemyDied ();
 		dead = true;
 		Object.Destroy (this.gameObject, corpseTime);
 	}

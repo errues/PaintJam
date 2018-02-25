@@ -77,9 +77,7 @@ public class Bullet : MonoBehaviour {
 			}
 		} else if (col.gameObject.tag == "Border" || col.gameObject.tag == "Platform" || col.gameObject.tag == "TriggerPlatform") {
 			audioSource.Stop ();
-			AudioClip a = wallClip [Random.Range (0, wallClip.Length)];
-			print (a);
-			audioSource.PlayOneShot (a);
+			audioSource.PlayOneShot (wallClip [Random.Range (0, wallClip.Length)]);
 			Destroy ();
 		} else if (col.gameObject.tag == "Player") {
 			Physics2D.IgnoreCollision (col.collider, GetComponent<Collider2D> ());

@@ -25,9 +25,8 @@ public class SuicideExplode : MonoBehaviour {
 		GetComponent<Rigidbody2D> ().constraints = RigidbodyConstraints2D.FreezeAll;
 		transform.position = new Vector3 (transform.position.x, transform.position.y, -1);
 
-		EnemyController ec = transform.parent.GetComponent<EnemyController> ();
+		GameObject.FindGameObjectWithTag ("EnemyController").GetComponent<EnemyController> ().EnemyDied ();
 		transform.SetParent (null);
-		ec.EnemyDied ();
 
 		Object.Destroy (this.gameObject, explosionTime);
 	}

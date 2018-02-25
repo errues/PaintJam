@@ -13,8 +13,8 @@ public abstract class EnemyMovement : MonoBehaviour {
 	protected Rigidbody2D rb;
 
 	private Collider2D myCollider;
-	private SpriteRenderer filling;
-	private SpriteRenderer border;
+	protected SpriteRenderer filling;
+	protected SpriteRenderer border;
 
 	private float fillXSize;
 	private float borderXSize;

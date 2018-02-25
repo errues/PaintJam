@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D rb;
     private Animator anim;
     private PlayerSounds sounds;
+	private PlayerHealth playerHealth;
 
     // Use this for initialization
     void Start() {
@@ -36,25 +37,28 @@ public class PlayerMovement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sounds = GetComponent<PlayerSounds>();
+		playerHealth = GetComponent<PlayerHealth> ();
         crouchSpeed = speed * 0.5f;
     }
 
     // Update is called once per frame
     void Update() {
-        moveHorizontal();
-        crouch();
-        selectFacing();
-        setAnimation();
-        fall();
-        jump();
-        wallJump();
-        if (jumpWall) {
-            inContactWithWall = false;
-            jumpWallDir = Vector2.zero;
-        }
-        if (grounded && jumpWall) {
-            jumpWall = false;
-        }
+		if (!playerHealth.IsHidden ()) {
+			moveHorizontal();
+			crouch();
+			selectFacing();
+			setAnimation();
+			fall();
+			jump();
+			wallJump();
+			if (jumpWall) {
+				inContactWithWall = false;
+				jumpWallDir = Vector2.zero;
+			}
+			if (grounded && jumpWall) {
+				jumpWall = false;
+			}
+		}
     }
 
     private void moveHorizontal() {

@@ -11,9 +11,6 @@ public class JumperMovement : EnemyMovement {
 	private Sprite idleFillSprite;
 	private Sprite idleBorderSprite;
 
-	private SpriteRenderer fill;
-	private SpriteRenderer border;
-
 	private bool onGround;
 	private AudioSource audioSource;
 	private EnemySounds enemySounds;
@@ -24,10 +21,10 @@ public class JumperMovement : EnemyMovement {
 		audioSource = GetComponent<AudioSource> ();
 		enemySounds = GetComponent<EnemySounds> ();
 
-		fill = GetComponent<EnemySpriteManager> ().filling;
+		filling = GetComponent<EnemySpriteManager> ().filling;
 		border = GetComponent<EnemySpriteManager> ().border;
 
-		idleFillSprite = fill.sprite;
+		idleFillSprite = filling.sprite;
 		idleBorderSprite = border.sprite;
 	}
 	
@@ -43,7 +40,7 @@ public class JumperMovement : EnemyMovement {
 				onGround = false;
 				audioSource.PlayOneShot (enemySounds.GetActionClip ());
 
-				fill.sprite = jumpingFillSprite;
+				filling.sprite = jumpingFillSprite;
 				border.sprite = jumpingBorderSprite;
 			}
 		}
@@ -58,7 +55,7 @@ public class JumperMovement : EnemyMovement {
 		base.OnCollisionEnter2D (col);
 		if (col.gameObject.tag == "Border" || col.gameObject.tag == "Platform" || col.gameObject.tag == "TriggerPlatform") {
 			onGround = true;
-			fill.sprite = idleFillSprite;
+			filling.sprite = idleFillSprite;
 			border.sprite = idleBorderSprite;
 		}
 	}

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PageController : MonoBehaviour {
 	public Strip[] strips;
+	public AudioClip firstClip;
 
 	private int currentStrip;
 
@@ -23,7 +24,7 @@ public class PageController : MonoBehaviour {
 
 		cameraController = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraController> ();
 		cameraController.FirstStrip (strips[currentStrip]);
-		musicController.PlayTheme (strips [currentStrip].GetTheme ());
+		musicController.PlayTheme (firstClip);
 	}
 
 	private void Update(){

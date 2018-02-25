@@ -14,10 +14,13 @@ public class PlayerHealth : MonoBehaviour {
 
 	private SpriteRenderer sprite;
 
+	private bool hidden;
+
     private void Start() {
         isInvulnerable = false;
         anim = GetComponent<Animator>();
 		sprite = transform.GetComponentInChildren<SpriteRenderer> ();
+		Hide ();
     }
 
     public void takeDamage(int dmg = 1) {
@@ -48,9 +51,15 @@ public class PlayerHealth : MonoBehaviour {
 
 	public void Hide(){
 		sprite.enabled = false;
+		hidden = true;
 	}
 
 	public void Show(){
 		sprite.enabled = true;
+		hidden = false;
+	}
+
+	public bool IsHidden(){
+		return hidden;
 	}
 }

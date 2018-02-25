@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	private PlayerMovement playerMovement;
 	private PlayerSounds playerSounds;
-    private Animator anim;
+	private PlayerHealth playerHealth;
 
 	private void Awake(){
 		bluePressed = yellowPressed = redPressed = false;
@@ -24,30 +24,31 @@ public class PlayerShoot : MonoBehaviour {
 
 		playerMovement = GetComponent<PlayerMovement> ();
 		playerSounds = GetComponent<PlayerSounds> ();
-        anim = GetComponent<Animator>();
+		playerHealth = GetComponent<PlayerHealth> ();
 	}
 
 	private void Update(){
-		if (Input.GetAxis ("Fire_Blue") == 0) {
-			bluePressed = false;
-		} else if (Time.time - timeSinceLastShot > timeBetweenShots && !bluePressed){
-			bluePressed = true;
-			Shoot (BasicColors.AZUL);
-		}
-
-		if (Input.GetAxis ("Fire_Yellow") == 0) {
-			yellowPressed = false;
-		} else if (Time.time - timeSinceLastShot > timeBetweenShots && !yellowPressed){
-            yellowPressed = true;
-			Shoot (BasicColors.AMARILLO);
-		}
-
-		if (Input.GetAxis ("Fire_Red") == 0) {
-			redPressed = false;
-		} else if (Time.time - timeSinceLastShot > timeBetweenShots && !redPressed){
-            redPressed = true;
-			float a = Time.time - timeSinceLastShot;
-			Shoot (BasicColors.ROJO);
+		if (!playerHealth.IsHidden ()) {
+			if (Input.GetAxis ("Fire_Blue") == 0) {
+				bluePressed = false;
+			} else if (Time.time - timeSinceLastShot > timeBetweenShots && !bluePressed){
+				bluePressed = true;
+				Shoot (BasicColors.AZUL);
+			}
+			
+			if (Input.GetAxis ("Fire_Yellow") == 0) {
+				yellowPressed = false;
+			} else if (Time.time - timeSinceLastShot > timeBetweenShots && !yellowPressed){
+				yellowPressed = true;
+				Shoot (BasicColors.AMARILLO);
+			}
+			
+			if (Input.GetAxis ("Fire_Red") == 0) {
+				redPressed = false;
+			} else if (Time.time - timeSinceLastShot > timeBetweenShots && !redPressed){
+				redPressed = true;
+				Shoot (BasicColors.ROJO);
+			}
 		}
 	}
 

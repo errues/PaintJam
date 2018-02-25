@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 251316362051691822}
   m_Layer: 0
   m_Name: MovingPlatform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  platformSize: {x: 0, y: 0}
   speed: 2
-  PlatformSize: {x: 1, y: 1}
   positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

@@ -16,6 +16,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	private PlayerMovement playerMovement;
 	private PlayerSounds playerSounds;
+    private Animator anim;
 
 	private void Awake(){
 		bluePressed = yellowPressed = redPressed = false;
@@ -23,6 +24,7 @@ public class PlayerShoot : MonoBehaviour {
 
 		playerMovement = GetComponent<PlayerMovement> ();
 		playerSounds = GetComponent<PlayerSounds> ();
+        anim = GetComponent<Animator>();
 	}
 
 	private void Update(){
@@ -36,14 +38,14 @@ public class PlayerShoot : MonoBehaviour {
 		if (Input.GetAxis ("Fire_Yellow") == 0) {
 			yellowPressed = false;
 		} else if (Time.time - timeSinceLastShot > timeBetweenShots && !yellowPressed){
-			yellowPressed = true;
+            yellowPressed = true;
 			Shoot (BasicColors.AMARILLO);
 		}
 
 		if (Input.GetAxis ("Fire_Red") == 0) {
 			redPressed = false;
 		} else if (Time.time - timeSinceLastShot > timeBetweenShots && !redPressed){
-			redPressed = true;
+            redPressed = true;
 			float a = Time.time - timeSinceLastShot;
 			Shoot (BasicColors.ROJO);
 		}

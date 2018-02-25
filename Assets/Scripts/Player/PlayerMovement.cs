@@ -56,11 +56,6 @@ public class PlayerMovement : MonoBehaviour {
         if (!inContactWithWall && !jumpWall) {
             float xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
-            if(xVelocity != 0) {
-                audioManager.playSteps();
-            } else {
-                audioManager.stopPlay();
-            }
         }
         // TODO POSSIBLE add jump control with horizontal movement
         xVel.y = rb.velocity.y;

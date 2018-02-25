@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour {
     private bool jumpWall;
     private bool facingRight;
     private Animator anim;
+    private PlayerSounds audioManager;
 
     // Use this for initialization
     void Start() {
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour {
         inContactWithWall = false;
         facingRight = true;
         anim = GetComponent<Animator>();
+        audioManager = GetComponent<PlayerSounds>();
     }
 
     // Update is called once per frame
@@ -54,6 +56,11 @@ public class PlayerMovement : MonoBehaviour {
         if (!inContactWithWall && !jumpWall) {
             float xVelocity = Mathf.Clamp(speed * Input.GetAxis("Horizontal"), -speed, speed);
             xVel.x = xVelocity;
+            if(xVelocity != 0) {
+                audioManager.playSteps();
+            } else {
+                audioManager.stopPlay();
+            }
         }
         // TODO POSSIBLE add jump control with horizontal movement
         xVel.y = rb.velocity.y;

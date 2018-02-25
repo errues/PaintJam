@@ -30,7 +30,7 @@ public class JumperMovement : EnemyMovement {
 			Mathf.Abs (player.position.y - transform.position.y) < maxHeightDifference;
 	}
 
-	private void OnCollisionEnter2D (Collision2D col) {
+	new private void OnCollisionEnter2D (Collision2D col) {
 		base.OnCollisionEnter2D (col);
 		if (col.gameObject.tag == "Border") {
 			onGround = true;

@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1906092934880432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4911298352680944}
@@ -178,6 +178,9 @@ MonoBehaviour:
   color: 4
   maxHealth: 10
   maxTransparency: 0.3
+  corpseTime: 1
+  deadSpriteFilling: {fileID: 21300000, guid: 0f7b47039ac8c48b2a97327b2a143c22, type: 3}
+  deadSpriteBorder: {fileID: 21300000, guid: 28bfcd217460249059ada0cc4912e035, type: 3}
 --- !u!114 &114980058516660608
 MonoBehaviour:
   m_ObjectHideFlags: 1

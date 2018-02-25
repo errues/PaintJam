@@ -9,15 +9,24 @@ public class EnemyHealth : MonoBehaviour {
 	[Range(0f, 1f)]
 	public float maxTransparency = 0.3f;
 
+	public float corpseTime = 1;
+
 	private SpriteRenderer filling;
+	private SpriteRenderer border;
+
+	public Sprite deadSpriteFilling;
+	public Sprite deadSpriteBorder;
 
 	private int Y, R, B;
 	private float alpha;
 
 	private void Start(){		
 		alpha = 1f;
-		SetHealth ();
+
 		filling = GetComponent<EnemySpriteManager> ().filling;
+		border = GetComponent<EnemySpriteManager> ().border;
+
+		SetHealth ();
 		SetColor ();
 	}
 
@@ -115,7 +124,10 @@ public class EnemyHealth : MonoBehaviour {
 
 		if (hit)
 			SetColor ();
-
+		
+		if (Y <= 0 && R <= 0 && B <= 0)
+			Die ();
+		
 		return hit;
 	}
 
@@ -193,5 +205,11 @@ public class EnemyHealth : MonoBehaviour {
 			B = maxHealth;
 			break;
 		}
+	}
+
+	private void Die(){
+		filling.sprite = deadSpriteFilling;
+		border.sprite = deadSpriteBorder;
+		Object.Destroy (this.gameObject, corpseTime);
 	}
 }

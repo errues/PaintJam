@@ -1319,7 +1319,7 @@ Prefab:
     - target: {fileID: 114525210700874396, guid: b872316eb5ea286448d8697249ae39e0,
         type: 2}
       propertyPath: waves.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114525210700874396, guid: b872316eb5ea286448d8697249ae39e0,
         type: 2}

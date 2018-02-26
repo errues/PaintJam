@@ -84,7 +84,9 @@ public abstract class EnemyMovement : MonoBehaviour {
 		if (col.gameObject.tag == "Enemy") {
 			Physics2D.IgnoreCollision (col.collider, myCollider);
 		} else if (col.gameObject.tag == "Player") {
-			GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth> ().takeDamage ();
+			if (!enemyHealth.IsDead ()) {
+				GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth> ().takeDamage ();
+			}
 			Physics2D.IgnoreCollision (col.collider, myCollider);
 		}
 	}

@@ -122,7 +122,7 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	IEnumerator DelayedSpawning(float t){
-		if (!hardReset) {
+		if (!hardReset && enemiesToSpawn.Length > 0) {
 			audioSource.PlayOneShot (enemySpawnClips [Random.Range (0, enemySpawnClips.Length)]);
 			CreateEnemy (enemiesToSpawn [spawnIndex], life, comb);
 			spawnIndex++;

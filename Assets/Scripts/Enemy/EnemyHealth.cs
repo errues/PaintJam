@@ -243,6 +243,7 @@ public class EnemyHealth : MonoBehaviour {
 		transform.SetParent (null);
 		GameObject.FindGameObjectWithTag ("EnemyController").GetComponent<EnemyController> ().EnemyDied ();
 		dead = true;
+		GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
 		Object.Destroy (this.gameObject, corpseTime);
 	}
 

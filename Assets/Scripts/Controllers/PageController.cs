@@ -39,7 +39,7 @@ public class PageController : MonoBehaviour {
 		GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerHealth> ().Hide (); // Qué cutre!
 		currentStrip++;
 		if (currentStrip >= strips.Length) {
-			SceneManager.LoadScene ("main");
+			SceneManager.LoadScene ("Credits");
 		} else {
 			cameraController.NextStrip (strips[currentStrip]);
 			musicController.Stop ();

@@ -23,7 +23,7 @@ public class Platform : MonoBehaviour {
     private void Start() {
         setColliders(gameObject.GetComponents<BoxCollider2D>());
         if (!type.Equals(PlatformType.Static)) {
-            transform.position = positions[0];
+            transform.localPosition = positions[0];
         }
         nextPosIndex = 1;
         loop = !this.CompareTag("TriggerPlatform");
@@ -44,7 +44,7 @@ public class Platform : MonoBehaviour {
                 Vector2 triggerPos = new Vector2(0, platformSize.y * 0.5f);
                 col.size = triggerSize;
                 col.offset = triggerPos;
-                transform.position = positions[0];
+                transform.localPosition = positions[0];
             } else {
                 col.size = platformSize;
             }
@@ -52,7 +52,7 @@ public class Platform : MonoBehaviour {
     }
 
     private bool checkPos(Vector3 goalPos) {
-        Vector3 currentPos = transform.position;
+        Vector3 currentPos = transform.localPosition;
         currentPos.x = (float)Math.Round(currentPos.x, 1);
         currentPos.y = (float)Math.Round(currentPos.y, 1);
         return currentPos.Equals(goalPos);
@@ -66,7 +66,7 @@ public class Platform : MonoBehaviour {
             }
         }
         if (loop) {
-            transform.position = Vector3.Lerp(transform.position, positions[nextPosIndex], speed * Time.deltaTime);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, positions[nextPosIndex], speed * Time.deltaTime);
         }
     }
 

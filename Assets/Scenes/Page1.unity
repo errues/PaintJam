@@ -2416,6 +2416,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 20935725865505738, guid: 95fb789e22eeb8246aa5341461122146,
+        type: 2}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95fb789e22eeb8246aa5341461122146, type: 2}
   m_IsPrefabParent: 0
@@ -6682,7 +6687,7 @@ RectTransform:
   m_Children:
   - {fileID: 1507658451}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12643,7 +12648,7 @@ Prefab:
     - target: {fileID: 114516648274173116, guid: a2e92f72a1e2d4e428640a4028583af1,
         type: 2}
       propertyPath: fixedCamera
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4448269421917856, guid: a2e92f72a1e2d4e428640a4028583af1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -12673,7 +12678,12 @@ Prefab:
         type: 2}
       propertyPath: theme
       value: 
-      objectReference: {fileID: 8300000, guid: 264cfd0fde9f642f3b0e7662a57f13c2, type: 3}
+      objectReference: {fileID: 8300000, guid: dbc557b13d5024832af5dba886138164, type: 3}
+    - target: {fileID: 114516648274173116, guid: a2e92f72a1e2d4e428640a4028583af1,
+        type: 2}
+      propertyPath: cameraZoom
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2e92f72a1e2d4e428640a4028583af1, type: 2}
   m_IsPrefabParent: 0
@@ -13070,6 +13080,11 @@ Prefab:
         type: 2}
       propertyPath: waves.Array.data[2].lifePoints
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114525210700874396, guid: b872316eb5ea286448d8697249ae39e0,
+        type: 2}
+      propertyPath: waves.Array.data[2].combinedColors
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b872316eb5ea286448d8697249ae39e0, type: 2}
@@ -13867,6 +13882,11 @@ Prefab:
     - target: {fileID: 114525210700874396, guid: b872316eb5ea286448d8697249ae39e0,
         type: 2}
       propertyPath: waves.Array.data[2].lifePoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114525210700874396, guid: b872316eb5ea286448d8697249ae39e0,
+        type: 2}
+      propertyPath: waves.Array.data[2].combinedColors
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -14695,7 +14715,12 @@ Prefab:
         type: 2}
       propertyPath: theme
       value: 
-      objectReference: {fileID: 8300000, guid: dbc557b13d5024832af5dba886138164, type: 3}
+      objectReference: {fileID: 8300000, guid: 264cfd0fde9f642f3b0e7662a57f13c2, type: 3}
+    - target: {fileID: 114516648274173116, guid: a2e92f72a1e2d4e428640a4028583af1,
+        type: 2}
+      propertyPath: cameraZoom
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a2e92f72a1e2d4e428640a4028583af1, type: 2}
   m_IsPrefabParent: 0
@@ -21840,7 +21865,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1937831763}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -21850,7 +21875,7 @@ Transform:
   - {fileID: 1055619462}
   - {fileID: 1624402529}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1941047532
 GameObject:
@@ -22457,7 +22482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1999724647
 Prefab:

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Menucontroller : MonoBehaviour {
 
-	public void loadGame() {
-        SceneManager.LoadScene("Page1");
+	public void loadLevel(string name) {
+        SceneManager.LoadScene(name);
     }
 
     public void exitRequest() {
